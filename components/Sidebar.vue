@@ -33,9 +33,9 @@
       <div class="flex">
         <!-- icon will be here -->
         <div class="flex flex-col">
-          <label class="-mb-1 text-xs font-medium text-[#AEAFC1]"
-            >WORKSPACE</label
-          >
+          <label class="-mb-1 text-xs font-medium text-[#AEAFC1]">{{
+            $t('workspace')
+          }}</label>
           <span class="truncate">{{
             workspaces[activeWorkspaceIndex].name
           }}</span>
