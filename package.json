@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "husky install; rm -rf .husky/pre-push; husky add .husky/pre-push 'yarn run hook:pre-push'; rm -rf .husky/_/.gitignore",
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "allupdate": "yarn upgrade-interactive --latest",
+    "format": "eslint '**/{*,''}.{json,js,vue}' --fix; prettier '**/{*,''}.{css,scss,json,js,vue}' --write;",
+    "lint": "eslint '**/{*,''}.{json,js,vue}'; prettier '**/{*,''}.{css,scss,json,js,vue}' --check;",
+    "hook:pre-push": "eslint '**/{*,''}.{json,js,vue}' && prettier '**/{*,''}.{css,scss,json,js,vue}' --check"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn run hook:pre-push"
+    }
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^9.0.0",
+    "@nuxtjs/tailwindcss": "^5.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "husky": "^7.0.4",
+    "nuxt": "^3.0.0-rc.8",
+    "prettier": "^2.6.0",
+    "prettier-plugin-tailwindcss": "^0.1.11",
+    "sass": "1.49.9",
+    "sass-loader": "12.6.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@headlessui/vue": "1.6.7",
+    "@heroicons/vue": "1.0.6",
+    "@pinia/nuxt": "0.4.1",
+    "@tailwindcss/aspect-ratio": "0.4.0",
+    "@tailwindcss/line-clamp": "0.3.1",
+    "@tailwindcss/typography": "0.5.2",
+    "pinia": "2.0.19"
+  },
+  "engines": {
+    "node": "^14.16.0 || ^16.11.0 || ^17.0.0"
+  }
+}

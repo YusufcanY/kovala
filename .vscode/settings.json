@@ -1,0 +1,63 @@
+{
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/dist/*/**": true,
+    "**/.nuxt/*/**": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "json.format.enable": false,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "versionlens.caching.duration": 0,
+  "versionlens.composer.caching.duration": 0,
+  "versionlens.npm.caching.duration": 0,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.fontWeight": "900",
+  "errorLens.margin": "2ch",
+  "errorLens.messageTemplate": "$count $severity: $message -($code) -$source",
+  "errorLens.statusBarMessageTemplate": "$message $source $severity $code",
+  "errorLens.statusBarMessageEnabled": true,
+  "errorLens.statusBarCommand": "copyMessage",
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.statusBarIconsEnabled": true,
+  "errorLens.statusBarMessageType": "closestProblem",
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconsFollowCursorOverride": false,
+  "errorLens.onSave": true,
+  "vetur.format.enable": false,
+  "vetur.languageFeatures.codeActions": false,
+  "vetur.languageFeatures.semanticTokens": false,
+  "vetur.languageFeatures.updateImportOnFileMove": false,
+  "vetur.validation.interpolation": false,
+  "vetur.validation.script": false,
+  "vetur.validation.style": false,
+  "vetur.validation.template": false,
+  "vetur.completion.autoImport": false
+}
