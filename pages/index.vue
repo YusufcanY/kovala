@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/vue/outline'
+  import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
   import { useCounterStore } from '~/store/counter'
   const counterStore = useCounterStore()
   const { increment, decrement } = counterStore
@@ -7,7 +7,7 @@
 </script>
 <template>
   <div
-    class="flex h-screen w-full flex-col items-center justify-center space-y-4 bg-gray-800 text-white"
+    class="flex h-full w-full flex-col items-center justify-center space-y-4"
   >
     <h1 class="text-4xl font-black">IT'S A TEXT</h1>
     <span class="text-2xl">{{ counter }}</span>
