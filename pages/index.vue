@@ -1,8 +1,5 @@
-<script setup>
-  import {
-    MinusCircleIcon,
-    PlusCircleIcon,
-  } from '@heroicons/vue/outline/esm/index.js'
+<script setup lang="ts">
+  import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/vue/outline'
   import { useCounterStore } from '~/store/counter'
   const counterStore = useCounterStore()
   const { increment, decrement } = counterStore
