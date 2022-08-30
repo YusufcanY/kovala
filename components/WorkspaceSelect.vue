@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { ChevronDownIcon } from '@heroicons/vue/24/outline'
+  const isLoading = useState('isLoading')
   const workspaces = useState('workspaces', () => [
     {
       id: 1,
@@ -38,8 +39,12 @@
     })
   }
   const setActiveWorkspace = (id: number) => {
+    isLoading.value = true
     workspaceDropdownOpen.value = false
-    activeWorkspaceId.value = id
+    setTimeout(() => {
+      activeWorkspaceId.value = id
+      isLoading.value = false
+    }, 2000)
   }
 </script>
 <template>
@@ -73,7 +78,7 @@
         <button
           v-for="item in getWorkspacesWithoutActive"
           :key="item.id"
-          class="flex items-center space-x-1 rounded-2xl bg-white py-2 px-4 shadow-lg"
+          class="flex items-center space-x-2 rounded-2xl bg-white py-4 px-4 shadow-lg"
           @click="setActiveWorkspace(item.id)"
         >
           <img alt="" class="h-8" :src="item.icon" />
