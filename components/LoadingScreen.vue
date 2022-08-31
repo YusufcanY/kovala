@@ -10,7 +10,7 @@
   <Transition name="loading-back">
     <div
       v-show="isLoading"
-      class="absolute top-0 left-0 z-40 h-full w-full bg-secondary-accent bg-opacity-90 backdrop-blur-sm"
+      class="fixed top-0 left-0 z-40 h-full w-full bg-secondary-accent bg-opacity-90 backdrop-blur-sm"
     ></div>
   </Transition>
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
