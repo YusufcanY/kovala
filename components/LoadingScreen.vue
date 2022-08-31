@@ -66,26 +66,26 @@
     height: 52.400000000000006px;
     top: 8.733333333333336px;
     left: 8.733333333333336px;
-    background: #ffffff;
+    background: #00dc82;
     animation: ldio-l1mv0tq4ov 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
     animation-delay: -0.3s;
   }
   .ldio-l1mv0tq4ov div:nth-child(2) {
     top: 8.733333333333336px;
     left: 69.86666666666666px;
-    background: #e7e7e7;
+    background: #002e3b;
     animation-delay: -0.2s;
   }
   .ldio-l1mv0tq4ov div:nth-child(3) {
     top: 69.86666666666666px;
     left: 8.733333333333336px;
-    background: #b6b6b6;
+    background: #002e3b;
     animation-delay: 0s;
   }
   .ldio-l1mv0tq4ov div:nth-child(4) {
     top: 69.86666666666666px;
     left: 69.86666666666666px;
-    background: #d2d2d2;
+    background: #00dc82;
     animation-delay: -0.1s;
   }
   .loadingio-spinner-cube-ugek8813moc {
