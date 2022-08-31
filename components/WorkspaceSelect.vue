@@ -5,24 +5,24 @@
     {
       id: 1,
       name: 'Atari',
-      icon: 'workspace-1.png',
+      icon: '/workspace-1.png',
       notification: true,
     },
     {
       id: 2,
       name: 'Dunkin Donuts',
-      icon: 'workspace-2.png',
+      icon: '/workspace-2.png',
     },
     {
       id: 3,
       name: "McDonald's",
-      icon: 'workspace-3.png',
+      icon: '/workspace-3.png',
       notification: true,
     },
     {
       id: 4,
       name: 'Uber',
-      icon: 'workspace-4.png',
+      icon: '/workspace-4.png',
     },
   ])
   const activeWorkspaceId = useState('activeWorkspaceId', () => 1)
