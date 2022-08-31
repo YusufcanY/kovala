@@ -19,13 +19,13 @@
       children: [
         {
           name: 'Frontend',
-          icon: 'workspace-1.png',
-          route: '/boards/calendar', // here will be change
+          icon: 'frontend.png',
+          route: '/boards/frontend',
         },
         {
           name: 'Backend',
-          icon: 'workspace-2.png',
-          route: '/boards/calendar', // here will be change
+          icon: 'backend.png',
+          route: '/boards/backend',
         },
       ],
     },
