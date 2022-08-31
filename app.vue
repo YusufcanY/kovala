@@ -10,5 +10,6 @@
       </div>
     </div>
     <LoadingScreen :is-loading="isLoading" />
+    <NoMobileScreen />
   </div>
 </template>
