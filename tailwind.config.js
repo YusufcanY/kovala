@@ -10,6 +10,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'primary-accent': '#00DC82',
+        'secondary-accent': '#002E3B',
         'page-foreground': '#F7F8FA',
       },
       gridTemplateColumns: {
