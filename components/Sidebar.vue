@@ -32,12 +32,12 @@
     {
       name: 'Calendar',
       icon: CalendarIcon,
-      route: '/settings',
+      route: '/calendar',
     },
     {
-      name: 'Message',
+      name: 'Messages',
       icon: ChatBubbleLeftRightIcon,
-      route: '/settings',
+      route: '/messages',
     },
     {
       name: 'Settings',
