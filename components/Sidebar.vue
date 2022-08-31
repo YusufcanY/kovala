@@ -19,12 +19,12 @@
       children: [
         {
           name: 'Frontend',
-          icon: 'frontend.png',
+          icon: '/frontend.png',
           route: '/boards/frontend',
         },
         {
           name: 'Backend',
-          icon: 'backend.png',
+          icon: '/backend.png',
           route: '/boards/backend',
         },
       ],
