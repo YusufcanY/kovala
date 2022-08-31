@@ -1,5 +1,9 @@
 <script setup lang="ts">
-  import { LanguageIcon, MoonIcon } from '@heroicons/vue/24/outline'
+  import {
+    EllipsisVerticalIcon,
+    LanguageIcon,
+    MoonIcon,
+  } from '@heroicons/vue/24/outline'
 </script>
 <template>
   <div class="flex flex-col space-y-2">
@@ -18,10 +22,13 @@
       </button>
     </div>
     <button
-      class="flex items-center space-x-2 rounded-lg border border-primary-accent border-opacity-0 p-4 transition-all duration-200 hover:border-opacity-100 hover:bg-gray-50"
+      class="flex items-center justify-between rounded-lg border border-primary-accent border-opacity-0 p-2 transition-all duration-200 hover:border-opacity-100"
     >
-      <img alt="" class="h-10 w-10" src="/backend.png" />
-      <span class="font-bold">John Doe</span>
+      <div class="flex items-center space-x-2">
+        <img alt="" class="h-10 w-10" src="/backend.png" />
+        <span class="font-bold">John Doe</span>
+      </div>
+      <EllipsisVerticalIcon class="h-6 w-6" />
     </button>
   </div>
 </template>
