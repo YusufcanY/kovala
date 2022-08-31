@@ -81,7 +81,7 @@
         <button
           v-for="item in getWorkspacesWithoutActive"
           :key="item.id"
-          class="relative flex items-center space-x-2 rounded-2xl bg-white p-4 shadow-lg"
+          class="relative flex items-center space-x-2 rounded-2xl border border-primary-accent border-opacity-0 bg-white p-4 shadow-lg transition-all duration-200 hover:border-opacity-100"
           @click="setActiveWorkspace(item.id)"
         >
           <img alt="" class="h-8" :src="item.icon" />
