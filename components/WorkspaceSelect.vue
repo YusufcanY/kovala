@@ -1,11 +1,12 @@
 <script setup lang="ts">
-  import { ChevronDownIcon } from '@heroicons/vue/24/outline'
+  import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/outline'
   const isLoading = useState('isLoading')
   const workspaces = useState('workspaces', () => [
     {
       id: 1,
       name: 'Atari',
       icon: 'workspace-1.png',
+      notification: true,
     },
     {
       id: 2,
@@ -16,6 +17,7 @@
       id: 3,
       name: "McDonald's",
       icon: 'workspace-3.png',
+      notification: true,
     },
     {
       id: 4,
@@ -68,23 +70,28 @@
           }}</span>
         </div>
       </div>
-      <ChevronDownIcon class="h-6 w-6" />
+      <ChevronUpIcon v-if="workspaceDropdownOpen" class="h-6 w-6" />
+      <ChevronDownIcon v-else class="h-6 w-6" />
     </button>
     <Transition name="dropdown">
       <div
         v-show="workspaceDropdownOpen"
-        class="absolute top-0 left-0 mt-16 flex w-full flex-col space-y-2"
+        class="absolute top-0 left-0 z-10 mt-16 flex w-full flex-col space-y-2 bg-white"
       >
         <button
           v-for="item in getWorkspacesWithoutActive"
           :key="item.id"
-          class="flex items-center space-x-2 rounded-2xl bg-white py-4 px-4 shadow-lg"
+          class="relative flex items-center space-x-2 rounded-2xl bg-white p-4 shadow-lg"
           @click="setActiveWorkspace(item.id)"
         >
           <img alt="" class="h-8" :src="item.icon" />
           <div class="flex flex-col items-start">
             <span class="truncate">{{ item.name }}</span>
           </div>
+          <div
+            v-if="item.notification"
+            class="absolute right-4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-primary-accent transition-all duration-200"
+          ></div>
         </button>
       </div>
     </Transition>
