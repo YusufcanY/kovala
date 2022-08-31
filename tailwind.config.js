@@ -19,6 +19,7 @@ module.exports = {
       },
       gridColumn: {
         'span-13': 'span 13 / span 13',
+        'span-14': 'span 14 / span 14',
       },
     },
   },
