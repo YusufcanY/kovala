@@ -2,3 +2,6 @@ input,
 button {
   outline: none;
 }
+body {
+  color: #002e3b;
+}
