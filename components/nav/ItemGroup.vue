@@ -37,13 +37,11 @@
           <div
             class="absolute left-0 top-1/2 h-3 w-1 -translate-y-1/2 rounded-r-lg bg-primary-accent transition-all duration-200 group-hover:w-2"
           ></div>
-          <img
-            class="h-6 w-6 rounded-full bg-white bg-opacity-50 p-1"
-            :src="child.icon"
-          />
+          <img class="h-6 w-6 p-1" :src="child.icon" />
           <span>{{ child.name }}</span>
         </NuxtLink>
       </div>
+      <slot />
     </div>
   </div>
 </template>

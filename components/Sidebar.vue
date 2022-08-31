@@ -28,6 +28,7 @@
           route: '/boards/backend',
         },
       ],
+      customComponent: resolveComponent('AddBoard'),
     },
     {
       name: 'Calendar',
@@ -52,7 +53,9 @@
     <WorkspaceSelect />
     <div class="mt-8 space-y-4">
       <div v-for="(item, index) in navItems" :key="index" class="w-full">
-        <NavItemGroup v-if="item.children" :item-with-child="item" />
+        <NavItemGroup v-if="item.children" :item-with-child="item">
+          <component :is="item.customComponent" v-if="item.customComponent" />
+        </NavItemGroup>
         <NuxtLink
           v-else
           class="flex items-center space-x-2 rounded-2xl bg-primary-accent py-2 px-4 transition-all duration-300"

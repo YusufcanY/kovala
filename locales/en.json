@@ -2,5 +2,6 @@
   "workspace": "WORKSPACE",
   "please_wait": "PLEASE WAIT",
   "please_switch_to_desktop": "PLEASE SWITCH TO DESKTOP",
-  "explanation_of_mobile": "because I didn't make the mobile version yet"
+  "explanation_of_mobile": "because I didn't make the mobile version yet",
+  "add_new": "Add New"
 }
