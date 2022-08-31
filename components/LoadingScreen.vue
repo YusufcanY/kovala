@@ -27,7 +27,7 @@
           <div></div>
         </div>
       </div>
-      <span class="font-semibold text-white">PLEASE WAIT</span>
+      <span class="font-semibold text-white">{{ $t('please_wait') }}</span>
     </div>
   </Transition>
 </template>
