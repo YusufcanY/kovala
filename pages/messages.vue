@@ -3,7 +3,7 @@
     {
       from: 'Ymir Vision',
       from_image: '/memojis/memoji-1.jpg',
-      message: "Did you finish your task? If you didn't you are fired",
+      message: "Did you finish your task?! If you didn't you are fired!!!",
       time: '1 hour ago',
       notifications: 301,
     },
@@ -57,7 +57,7 @@
                 {{ item.time }}</span
               >
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center justify-between">
               <span class="truncate text-xs text-[#AEAFC1]">
                 <span v-if="item.is_last_message_from_you" class="font-bold"
                   >You:</span
