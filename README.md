@@ -1,22 +1,16 @@
-# Nuxt 3, Pinia 2, Tailwindcss 3, Prettier and Eslint
-#### This repo have Nuxt 3 with :
-  - Pinia Store
-  - Tailwindcss 3
-  - Prettier Configs
-  - Eslint Configs
-  - Husky Pre-push config
-  - Heroicons
-  - Headless UI
+# **KOVALA**
+## **Fast and Easy To Use** Task Management Application
 
-If you want to delete unnecessary packages for you or your project, you can delete from `package.json` file but if you delete packages except Headless UI package, you need to search and clear from other files.
+<br />
+<br />
 
-> **Note:** In this repo i used `script setup` and i highly recommend to you use.
+KOVALA is a showcase project by [Yusufcan Yilmaz](https://yusufcanyilmaz.com)
 
-#### Some problems to need to fix:
-  - ~~Eslint cannot lint Nuxt 3 global functions (useState or computed etc.). Because these functions becoming with Nuxt 3 package and you dont need to import in script and Eslint cannot see they are global functions. Right now i solved in .eslintrc file with global object. You can add your global function and set the value to "readonly".~~
-  > **Note:** The issue on the above fixed but it is temporary solution. You can check out the modules/auto-import-eslint.ts file for the solution.
-  - Before push, husky stopping you if you didnt format something in the project. Then you can run `yarn format` but there is a one problem. After you run `yarn format` , its formatting files then you can push without last formatted changes because the pre push hook is not checking commit changes its checking current file statuses.
+You can directly use this project on production environment in [kovala.vercel.app](https://kovala.vercel.app).
 
-If you have any solution to problems on above or have another problem, you can open an issue or direct message me from any social media. 
+The UI is inspired by [Fireart Studio Agile Task Management UI on Dribble](https://dribbble.com/shots/17292479-Agile-Task-Management-Dashboard).
+Other than that Telegram and ClickUP UI is inspired me when I building KOVALA. Of course I also using my UI-EYE on it 👁️👁️.
 
-> Additional Info: I'm using this repo for my own projects usually. If you find an improvement for the repo please let me know.
+Fireart Studio Agile Task Management UI:
+
+![image](https://cdn.dribbble.com/users/485324/screenshots/17292479/media/b077c82e5c28ce53c8874540cf71ddf2.jpg?compress=1&resize=1600x1200&vertical=top)
