@@ -6,5 +6,6 @@ interface Message {
   time: string
   notifications?: number
   is_last_message_from_you?: boolean
+  is_online?: boolean
 }
 export { Message }

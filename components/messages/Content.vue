@@ -30,7 +30,13 @@
             <span class="truncate text-lg font-bold">{{
               getMessagerById?.from
             }}</span>
-            <span class="whitespace-nowrap text-sm text-[#AEAFC1]">
+            <span
+              v-if="getMessagerById?.is_online"
+              class="text-sm font-bold text-primary-accent"
+            >
+              online
+            </span>
+            <span v-else class="text-sm text-[#AEAFC1]">
               Last seen {{ getMessagerById?.time }}</span
             >
           </div>

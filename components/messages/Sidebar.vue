@@ -4,6 +4,7 @@
   const messages = useState<Message[]>('messages', () => [
     {
       id: 1,
+      is_online: true,
       from: 'Ymir Vision',
       from_image: '/memojis/memoji-1.jpg',
       message: "Did you finish your task?! If you didn't you are fired!!!",
@@ -35,6 +36,7 @@
     },
     {
       id: 5,
+      is_online: true,
       from: 'Smith Backbone',
       from_image: '/memojis/memoji-2.jpg',
       is_last_message_from_you: true,
@@ -57,11 +59,17 @@
         @click="activeMessageID = element.id"
       >
         <div class="grid w-full grid-cols-16 items-center space-x-2">
-          <img
-            alt=""
-            class="col-span-2 h-8 w-8 rounded-full"
-            :src="element.from_image"
-          />
+          <div class="relative col-span-2">
+            <img
+              alt=""
+              class="h-8 w-8 rounded-full"
+              :src="element.from_image"
+            />
+            <div
+              v-show="element.is_online"
+              class="absolute top-0 right-0 h-[12px] w-[12px] rounded-full border-2 border-white bg-primary-accent"
+            ></div>
+          </div>
           <div class="col-span-14 items-start">
             <div class="flex w-full justify-between">
               <span class="truncate text-sm font-bold">{{ element.from }}</span>
