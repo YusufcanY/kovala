@@ -34,7 +34,7 @@
               v-if="getMessagerById?.is_online"
               class="text-sm font-bold text-primary-accent"
             >
-              online
+              {{ $t('online') }}
             </span>
             <span v-else class="text-sm text-[#AEAFC1]">
               Last seen {{ getMessagerById?.time }}</span
