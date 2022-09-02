@@ -9,8 +9,3 @@
     </div>
   </div>
 </template>
-<style>
-  .flip-list-move {
-    transition: transform 0.5s;
-  }
-</style>

@@ -85,7 +85,7 @@
               >
               <div
                 v-if="element.notifications"
-                class="rounded-full bg-primary-accent px-1 text-xs text-white"
+                class="ml-1 rounded-full bg-primary-accent px-1 text-xs text-white"
               >
                 {{ element.notifications }}
               </div>
