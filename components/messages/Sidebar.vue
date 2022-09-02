@@ -67,7 +67,7 @@
             />
             <div
               v-show="element.is_online"
-              class="absolute top-0 right-0 h-[12px] w-[12px] rounded-full border-2 border-white bg-primary-accent"
+              class="absolute top-0 left-6 h-[12px] w-[12px] rounded-full border-2 border-white bg-primary-accent"
             ></div>
           </div>
           <div class="col-span-14 items-start">
