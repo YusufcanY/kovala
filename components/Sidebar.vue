@@ -6,7 +6,7 @@
     RectangleGroupIcon,
     RectangleStackIcon,
   } from '@heroicons/vue/24/outline'
-  const navItems = ref([
+  const navItems = shallowRef([
     {
       name: 'dashboard',
       icon: RectangleGroupIcon,
