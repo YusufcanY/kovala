@@ -4,6 +4,14 @@
   "please_switch_to_desktop": "LÜTFEN MASAÜSTÜNE GEÇİN",
   "explanation_of_mobile": "çünkü daha mobil versiyonu yapmadım",
   "add_new": "Yeni Ekle",
+  "menu": {
+    "dashboard": "Pano",
+    "boards": "Listeler",
+    "calendar": "Takvim",
+    "messages": "Mesajlar",
+    "settings": "Ayarlar"
+  },
+  "theme": "Tema",
   "en": "English",
   "tr": "Turkish"
 }

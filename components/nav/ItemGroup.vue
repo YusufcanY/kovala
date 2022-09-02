@@ -19,7 +19,7 @@
     >
       <div class="flex items-center space-x-2">
         <component :is="itemWithChild.icon" class="h-8 w-8" />
-        <span>{{ itemWithChild.name }}</span>
+        <span>{{ $t('menu.' + itemWithChild.name) }}</span>
       </div>
       <ChevronUpIcon v-if="isDropdownOpen" class="h-6 w-6" />
       <ChevronDownIcon v-else class="h-6 w-6" />

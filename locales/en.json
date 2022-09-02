@@ -3,7 +3,15 @@
   "please_wait": "PLEASE WAIT",
   "please_switch_to_desktop": "PLEASE SWITCH TO DESKTOP",
   "explanation_of_mobile": "because I didn't make the mobile version yet",
+  "menu": {
+    "dashboard": "Dashboard",
+    "boards": "Boards",
+    "calendar": "Calendar",
+    "messages": "Messages",
+    "settings": "Settings"
+  },
   "add_new": "Add New",
+  "theme": "Theme",
   "en": "English",
   "tr": "Turkish"
 }

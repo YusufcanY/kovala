@@ -9,7 +9,7 @@
         class="flex items-center space-x-2 rounded-lg p-2 hover:bg-gray-100"
       >
         <MoonIcon class="h-6 w-6" />
-        <span class="font-semibold">Theme</span>
+        <span class="font-semibold">{{ $t('theme') }}</span>
       </button>
     </div>
     <button

@@ -8,12 +8,12 @@
   } from '@heroicons/vue/24/outline'
   const navItems = ref([
     {
-      name: 'Dashboard',
+      name: 'dashboard',
       icon: RectangleGroupIcon,
       route: '/',
     },
     {
-      name: 'Boards',
+      name: 'boards',
       icon: RectangleStackIcon,
       route: '/boards',
       children: [
@@ -31,17 +31,17 @@
       customComponent: resolveComponent('AddBoard'),
     },
     {
-      name: 'Calendar',
+      name: 'calendar',
       icon: CalendarIcon,
       route: '/calendar',
     },
     {
-      name: 'Messages',
+      name: 'messages',
       icon: ChatBubbleLeftRightIcon,
       route: '/messages',
     },
     {
-      name: 'Settings',
+      name: 'settings',
       icon: Cog6ToothIcon,
       route: '/settings',
     },
@@ -68,7 +68,7 @@
             :to="item.route"
           >
             <component :is="item.icon" class="h-8 w-8" />
-            <span>{{ item.name }}</span>
+            <span>{{ $t('menu.' + item.name) }}</span>
           </NuxtLink>
         </div>
       </div>
