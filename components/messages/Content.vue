@@ -21,12 +21,12 @@
         <div class="col-span-3 flex items-center justify-center">
           <img
             alt=""
-            class="h-full rounded-full"
+            class="w-14 rounded-full"
             :src="getMessagerById?.from_image"
           />
         </div>
-        <div class="col-span-13">
-          <div class="flex w-full flex-col items-start">
+        <div class="col-span-13 flex justify-center">
+          <div class="flex w-full flex-col items-start justify-center">
             <span class="truncate text-lg font-bold">{{
               getMessagerById?.from
             }}</span>
