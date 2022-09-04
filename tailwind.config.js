@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   mode: 'jit',
   content: [
@@ -27,5 +30,16 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.hide-scrollbar': {
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          '-ms-overflow-style:': 'none',
+          'scrollbar-width:': 'none',
+        },
+      })
+    }),
   ],
 }
