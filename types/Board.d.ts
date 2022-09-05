@@ -15,4 +15,9 @@ interface Issue {
   }
   attachments: number
 }
-export { Issue }
+interface List {
+  id: number
+  name: string
+  issues: Issue[]
+}
+export type { Issue, List }

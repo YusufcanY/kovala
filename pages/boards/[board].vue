@@ -6,96 +6,132 @@
     PlusIcon,
   } from '@heroicons/vue/24/outline'
   import Draggable from 'vuedraggable'
-  import type { Issue } from '@/types/Issues'
+  import { Issue, List } from '@/types/Board'
 
-  const lists = ref([
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+  type DraggableElement = {
+    element: Issue
+  }
+  const lists = ref<List[]>([
     // 10: To Do, 20: In Progress, 30: Resolved, 40: Closed, 50: Reopened
     {
       id: 10,
       name: 'To Do',
+      issues: [
+        {
+          id: 1,
+          title: 'Create a new design for the landing page',
+          description:
+            'The current design is not responsive and needs to be updated',
+          status: 10,
+          priority: 'HIGH',
+          assignee: 'https://i.pravatar.cc/300?img=1',
+          labels: [
+            // need to display labels on front
+            {
+              id: 1,
+              name: 'Design',
+              color: '#F2C94C',
+            },
+            {
+              id: 2,
+              name: 'Frontend',
+              color: '#2F80ED',
+            },
+          ],
+          task: {
+            total: 5,
+            completed: 2,
+          },
+          attachments: 2,
+          due_date: 'Sep 20, 2022',
+          created_at: '2021-07-01',
+          updated_at: '2021-07-01',
+        },
+      ],
     },
     {
       id: 20,
       name: 'In Progress',
+      issues: [],
     },
     {
       id: 30,
       name: 'Resolved',
+      issues: [
+        {
+          id: 2,
+          title: 'ASD',
+          description:
+            'The current design is not responsive and needs to be updated',
+          status: 30,
+          priority: 'HIGH',
+          assignee: 'https://i.pravatar.cc/300?img=1',
+          labels: [
+            // need to display labels on front
+            {
+              id: 1,
+              name: 'Design',
+              color: '#F2C94C',
+            },
+            {
+              id: 2,
+              name: 'Frontend',
+              color: '#2F80ED',
+            },
+          ],
+          task: {
+            total: 5,
+            completed: 2,
+          },
+          attachments: 2,
+          due_date: 'Sep 20, 2022',
+          created_at: '2021-07-01',
+          updated_at: '2021-07-01',
+        },
+        {
+          id: 3,
+          title: 'FGFDHDF',
+          description:
+            'The current design is not responsive and needs to be updated',
+          status: 30,
+          priority: 'HIGH',
+          assignee: 'https://i.pravatar.cc/300?img=1',
+          labels: [
+            // need to display labels on front
+            {
+              id: 1,
+              name: 'Design',
+              color: '#F2C94C',
+            },
+            {
+              id: 2,
+              name: 'Frontend',
+              color: '#2F80ED',
+            },
+          ],
+          task: {
+            total: 5,
+            completed: 2,
+          },
+          attachments: 2,
+          due_date: 'Sep 20, 2022',
+          created_at: '2021-07-01',
+          updated_at: '2021-07-01',
+        },
+      ],
     },
     {
       id: 40,
       name: 'Closed',
+      issues: [],
     },
     {
       id: 50,
       name: 'Reopened',
+      issues: [],
     },
   ])
-  const issueList = ref<Issue[]>([
-    {
-      id: 1,
-      title: 'Create a new design for the landing page',
-      description:
-        'The current design is not responsive and needs to be updated',
-      status: 10,
-      priority: 'HIGH',
-      assignee: 'https://i.pravatar.cc/300?img=1',
-      labels: [
-        // need to display labels on front
-        {
-          id: 1,
-          name: 'Design',
-          color: '#F2C94C',
-        },
-        {
-          id: 2,
-          name: 'Frontend',
-          color: '#2F80ED',
-        },
-      ],
-      task: {
-        total: 5,
-        completed: 2,
-      },
-      attachments: 2,
-      due_date: 'Sep 20, 2022',
-      created_at: '2021-07-01',
-      updated_at: '2021-07-01',
-    },
-    {
-      id: 2,
-      title: 'ASD',
-      description:
-        'The current design is not responsive and needs to be updated',
-      status: 30,
-      priority: 'HIGH',
-      assignee: 'https://i.pravatar.cc/300?img=1',
-      labels: [
-        // need to display labels on front
-        {
-          id: 1,
-          name: 'Design',
-          color: '#F2C94C',
-        },
-        {
-          id: 2,
-          name: 'Frontend',
-          color: '#2F80ED',
-        },
-      ],
-      task: {
-        total: 5,
-        completed: 2,
-      },
-      attachments: 2,
-      due_date: 'Sep 20, 2022',
-      created_at: '2021-07-01',
-      updated_at: '2021-07-01',
-    },
-  ])
-  const getListFilteredByStatus = (status: number) => {
-    return issueList.value.filter((issue) => issue.status === status)
-  }
 </script>
 <template>
   <div>
@@ -103,13 +139,15 @@
       <BoardHeader />
       <BoardInfoSubheader />
     </div>
-    <div class="flex overflow-scroll hide-scrollbar">
+    <div class="flex space-x-6 overflow-scroll px-6 hide-scrollbar">
       <div
         v-for="(item, index) in lists"
         :key="index"
-        class="ml-6 w-64 space-y-4"
+        class="flex w-64 flex-[0_0_auto] flex-col space-y-4"
       >
-        <div class="flex items-center justify-between rounded-xl bg-white p-4">
+        <div
+          class="flex items-center justify-between whitespace-nowrap rounded-xl bg-white p-4"
+        >
           <span class="text-xl font-bold">{{ item.name }}</span>
           <div class="flex items-center space-x-2">
             <button
@@ -123,11 +161,12 @@
           </div>
         </div>
         <Draggable
+          class="h-full space-y-4"
           group="issues"
           item-key="id"
-          :list="getListFilteredByStatus(item.id)"
+          :list="item.issues"
         >
-          <template #item="{ element }: { element: Issue }">
+          <template #item="{ element }: DraggableElement">
             <button class="space-y-2 rounded-xl bg-white p-4 text-left">
               <div>
                 <span
