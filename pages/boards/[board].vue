@@ -19,12 +19,9 @@
       name: 'To Do',
       issues: [
         {
-          id: 1,
-          title: 'Create a new design for the landing page',
-          description:
-            'The current design is not responsive and needs to be updated',
-          status: 10,
-          priority: 'HIGH',
+          id: 2,
+          title: 'Feature: Adding dark mode',
+          priority: 10,
           assignee: 'https://i.pravatar.cc/300?img=1',
           labels: [
             // need to display labels on front
@@ -39,12 +36,7 @@
               color: '#2F80ED',
             },
           ],
-          task: {
-            total: 5,
-            completed: 2,
-          },
-          attachments: 2,
-          due_date: 'Sep 20, 2022',
+          due_date: 'Dec 31, 2022',
           created_at: '2021-07-01',
           updated_at: '2021-07-01',
         },
@@ -53,19 +45,12 @@
     {
       id: 20,
       name: 'In Progress',
-      issues: [],
-    },
-    {
-      id: 30,
-      name: 'Resolved',
       issues: [
         {
-          id: 2,
-          title: 'ASD',
-          description:
-            'The current design is not responsive and needs to be updated',
-          status: 30,
-          priority: 'HIGH',
+          id: 1,
+          title: 'Landing Page New Desing',
+          description: 'The current design is looks bad',
+          priority: 20,
           assignee: 'https://i.pravatar.cc/300?img=1',
           labels: [
             // need to display labels on front
@@ -81,38 +66,8 @@
             },
           ],
           task: {
-            total: 5,
-            completed: 2,
-          },
-          attachments: 2,
-          due_date: 'Sep 20, 2022',
-          created_at: '2021-07-01',
-          updated_at: '2021-07-01',
-        },
-        {
-          id: 3,
-          title: 'FGFDHDF',
-          description:
-            'The current design is not responsive and needs to be updated',
-          status: 30,
-          priority: 'HIGH',
-          assignee: 'https://i.pravatar.cc/300?img=1',
-          labels: [
-            // need to display labels on front
-            {
-              id: 1,
-              name: 'Design',
-              color: '#F2C94C',
-            },
-            {
-              id: 2,
-              name: 'Frontend',
-              color: '#2F80ED',
-            },
-          ],
-          task: {
-            total: 5,
-            completed: 2,
+            total: 2,
+            completed: 1,
           },
           attachments: 2,
           due_date: 'Sep 20, 2022',
@@ -122,24 +77,107 @@
       ],
     },
     {
-      id: 40,
-      name: 'Closed',
+      id: 30,
+      name: 'Testing',
       issues: [],
     },
     {
+      id: 40,
+      name: 'Resolved',
+      issues: [
+        {
+          id: 3,
+          title: 'Buying Token is Not Working',
+          description:
+            'When you swap -> disconnect -> connect -> swap again, it will not work',
+          priority: 30,
+          assignee: 'https://i.pravatar.cc/300?img=1',
+          labels: [
+            // need to display labels on front
+            {
+              id: 1,
+              name: 'Design',
+              color: '#F2C94C',
+            },
+            {
+              id: 2,
+              name: 'Frontend',
+              color: '#2F80ED',
+            },
+          ],
+          attachments: 1,
+          due_date: 'Due Today',
+          created_at: '2021-07-01',
+          updated_at: '2021-07-01',
+        },
+        {
+          id: 4,
+          title: 'Login is not working',
+          priority: 30,
+          assignee: 'https://i.pravatar.cc/300?img=1',
+          labels: [
+            // need to display labels on front
+            {
+              id: 1,
+              name: 'Design',
+              color: '#F2C94C',
+            },
+            {
+              id: 2,
+              name: 'Frontend',
+              color: '#2F80ED',
+            },
+          ],
+          attachments: 2,
+          due_date: 'Overdue',
+          created_at: '2021-07-01',
+          updated_at: '2021-07-01',
+        },
+      ],
+    },
+    {
       id: 50,
-      name: 'Reopened',
-      issues: [],
+      name: 'Closed',
+      issues: [
+        {
+          id: 5,
+          title: 'Login Page Update',
+          priority: 20,
+          assignee: 'https://i.pravatar.cc/300?img=1',
+          labels: [
+            // need to display labels on front
+            {
+              id: 1,
+              name: 'Design',
+              color: '#F2C94C',
+            },
+            {
+              id: 2,
+              name: 'Frontend',
+              color: '#2F80ED',
+            },
+          ],
+          task: {
+            total: 5,
+            completed: 4,
+          },
+          due_date: 'Complete',
+          created_at: '2021-07-01',
+          updated_at: '2021-07-01',
+        },
+      ],
     },
   ])
 </script>
 <template>
-  <div>
+  <div class="h-full">
     <div class="space-y-10 p-6">
       <BoardHeader />
       <BoardInfoSubheader />
     </div>
-    <div class="flex space-x-6 overflow-scroll px-6 hide-scrollbar">
+    <div
+      class="grid grid-flow-col grid-cols-[unset] grid-rows-[unset] gap-x-6 overflow-scroll px-6 hide-scrollbar"
+    >
       <div
         v-for="(item, index) in lists"
         :key="index"
@@ -167,12 +205,19 @@
           :list="item.issues"
         >
           <template #item="{ element }: DraggableElement">
-            <button class="space-y-2 rounded-xl bg-white p-4 text-left">
+            <button class="w-full space-y-2 rounded-xl bg-white p-4 text-left">
               <div>
                 <span
-                  class="rounded-md bg-red-100 px-2 py-1 text-xs font-bold text-red-500"
+                  class="rounded-md px-2 py-1 text-xs font-bold"
+                  :class="
+                    element.priority === 10
+                      ? 'bg-green-100 text-primary-accent'
+                      : element.priority === 20
+                      ? 'bg-yellow-50 text-yellow-500'
+                      : 'bg-red-100 text-red-500'
+                  "
                 >
-                  {{ element.priority }}
+                  {{ $t(String(element.priority)) }}
                 </span>
               </div>
               <div>
@@ -187,7 +232,16 @@
               </div>
               <div>
                 <span
-                  class="rounded-md border border-[#e6e6f0] bg-[#f9f9fb] px-2 py-1 text-xs font-bold text-[#1b1e49]"
+                  class="rounded-md border px-2 py-1 text-xs font-medium"
+                  :class="
+                    element.due_date === 'Due Today'
+                      ? 'border-yellow-500 bg-yellow-50 text-yellow-500'
+                      : element.due_date === 'Overdue'
+                      ? 'border-red-500 bg-red-100 text-red-500'
+                      : element.due_date === 'Complete'
+                      ? 'border-green-500 bg-green-100 text-green-500'
+                      : 'border-[#e6e6f0] bg-[#f9f9fb] text-[#1b1e49]'
+                  "
                   >{{ element.due_date }}</span
                 >
               </div>
@@ -207,11 +261,14 @@
                   />
                 </div>
                 <div class="flex items-center space-x-2">
-                  <div class="flex items-center space-x-1">
+                  <div
+                    v-if="element.attachments"
+                    class="flex items-center space-x-1"
+                  >
                     <PaperClipIcon class="h-6 w-6" />
                     <span class="font-medium">{{ element.attachments }}</span>
                   </div>
-                  <div class="flex items-center space-x-1">
+                  <div v-if="element.task" class="flex items-center space-x-1">
                     <CheckCircleIcon class="h-6 w-6" />
                     <span class="font-medium"
                       >{{ element.task.completed }}/{{

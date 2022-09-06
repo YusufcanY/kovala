@@ -11,6 +11,9 @@
     "settings": "Settings"
   },
   "add_new": "Add New",
+  "10": "LOW",
+  "20": "MEDIUM",
+  "30": "HIGH",
   "online": "online",
   "theme": "Theme",
   "en": "English",
