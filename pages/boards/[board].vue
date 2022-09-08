@@ -4,6 +4,7 @@
     EllipsisHorizontalIcon,
     PaperClipIcon,
     PlusIcon,
+    UserPlusIcon,
   } from '@heroicons/vue/24/outline'
   import Draggable from 'vuedraggable'
   import type { Issue, List } from '@/types/Board'
@@ -117,7 +118,7 @@
           id: 5,
           title: 'Login Page Update',
           priority: 20,
-          assignee: [people.value[4]],
+          assignee: [people.value[4], people.value[2], people.value[1]],
           task: {
             total: 5,
             completed: 4,
@@ -207,17 +208,24 @@
                 >
               </div>
               <div class="flex justify-between">
-                <div
-                  v-if="element.assignee && element.assignee[0]"
-                  class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
-                >
-                  <img
-                    v-for="assignee in element.assignee"
-                    :key="assignee.id"
-                    alt=""
-                    class="h-7 w-7 rounded-full border-2 border-white"
-                    :src="assignee.image"
-                  />
+                <div class="flex space-x-0.5">
+                  <div
+                    v-if="element.assignee && element.assignee[0]"
+                    class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
+                  >
+                    <img
+                      v-for="assignee in element.assignee"
+                      :key="assignee.id"
+                      alt=""
+                      class="h-7 w-7 rounded-full border-2 border-white"
+                      :src="assignee.image"
+                    />
+                  </div>
+                  <button>
+                    <UserPlusIcon
+                      class="h-8 w-8 rounded-full border-[3px] border-white bg-primary-accent bg-opacity-10 p-1 text-primary-accent"
+                    />
+                  </button>
                 </div>
                 <div class="flex items-center space-x-2">
                   <div
