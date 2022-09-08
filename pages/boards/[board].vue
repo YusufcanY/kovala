@@ -6,12 +6,40 @@
     PlusIcon,
   } from '@heroicons/vue/24/outline'
   import Draggable from 'vuedraggable'
-  import { Issue, List } from '@/types/Board'
+  import type { Issue, List } from '@/types/Board'
+  import type { Person } from '@/types/Person'
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
   type DraggableElement = {
     element: Issue
   }
+  const people = useState<Person[]>('people', () => [
+    {
+      id: 1,
+      name: 'Ymir Vision',
+      image: '/memojis/memoji-1.jpg',
+    },
+    {
+      id: 2,
+      name: 'John Doe',
+      image: '/memojis/memoji-3.jpg',
+    },
+    {
+      id: 3,
+      name: 'Alcoholic German',
+      image: '/memojis/memoji-5.jpg',
+    },
+    {
+      id: 4,
+      name: 'Fart Beeday',
+      image: '/memojis/memoji-4.jpg',
+    },
+    {
+      id: 5,
+      name: 'Smith Backbone',
+      image: '/memojis/memoji-2.jpg',
+    },
+  ])
   const lists = ref<List[]>([
     // 10: To Do, 20: In Progress, 30: Resolved, 40: Closed, 50: Reopened
     {
@@ -22,7 +50,6 @@
           id: 2,
           title: 'Feature: Adding dark mode',
           priority: 10,
-          assignee: 'https://i.pravatar.cc/300?img=1',
           labels: [
             // need to display labels on front
             {
@@ -51,7 +78,9 @@
           title: 'Landing Page New Desing',
           description: 'The current design is looks bad',
           priority: 20,
-          assignee: 'https://i.pravatar.cc/300?img=1',
+          assignee: [
+            people.value[Math.floor(Math.random() * people.value.length)],
+          ],
           labels: [
             // need to display labels on front
             {
@@ -91,7 +120,10 @@
           description:
             'When you swap -> disconnect -> connect -> swap again, it will not work',
           priority: 30,
-          assignee: 'https://i.pravatar.cc/300?img=1',
+          assignee: [
+            people.value[Math.floor(Math.random() * people.value.length)],
+            people.value[Math.floor(Math.random() * people.value.length)],
+          ],
           labels: [
             // need to display labels on front
             {
@@ -114,7 +146,9 @@
           id: 4,
           title: 'Login is not working',
           priority: 30,
-          assignee: 'https://i.pravatar.cc/300?img=1',
+          assignee: [
+            people.value[Math.floor(Math.random() * people.value.length)],
+          ],
           labels: [
             // need to display labels on front
             {
@@ -143,7 +177,9 @@
           id: 5,
           title: 'Login Page Update',
           priority: 20,
-          assignee: 'https://i.pravatar.cc/300?img=1',
+          assignee: [
+            people.value[Math.floor(Math.random() * people.value.length)],
+          ],
           labels: [
             // need to display labels on front
             {
@@ -247,17 +283,15 @@
               </div>
               <div class="flex justify-between">
                 <div
+                  v-if="element.assignee && element.assignee.length"
                   class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
                 >
                   <img
+                    v-for="(assignee, index) in element.assignee"
+                    :key="index"
                     alt=""
                     class="h-7 w-7 rounded-full border-2 border-white"
-                    src="/memojis/memoji-1.jpg"
-                  />
-                  <img
-                    alt=""
-                    class="h-7 w-7 rounded-full border-2 border-white"
-                    src="/memojis/memoji-3.jpg"
+                    :src="assignee.image"
                   />
                 </div>
                 <div class="flex items-center space-x-2">

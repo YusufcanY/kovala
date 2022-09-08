@@ -1,3 +1,4 @@
+import type { Person } from '@/types/Person'
 interface Issue {
   id: number
   title: string
@@ -5,7 +6,7 @@ interface Issue {
   labels: object[]
   //   status: 10 | 20 | 30 | 40 | 50 // 10: To Do, 20: In Progress, 30: Resolved, 40: Closed, 50: Reopened
   priority: 10 | 20 | 30 // 10: Low, 20: Medium, 30: High
-  assignee: string
+  assignee?: Person[]
   due_date: string
   created_at: string
   updated_at: string
