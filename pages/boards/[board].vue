@@ -41,7 +41,6 @@
     },
   ])
   const lists = ref<List[]>([
-    // 10: To Do, 20: In Progress, 30: Resolved, 40: Closed, 50: Reopened
     {
       id: 10,
       name: 'To Do',
@@ -50,19 +49,6 @@
           id: 2,
           title: 'Feature: Adding dark mode',
           priority: 10,
-          labels: [
-            // need to display labels on front
-            {
-              id: 1,
-              name: 'Design',
-              color: '#F2C94C',
-            },
-            {
-              id: 2,
-              name: 'Frontend',
-              color: '#2F80ED',
-            },
-          ],
           due_date: 'Dec 31, 2022',
           created_at: '2021-07-01',
           updated_at: '2021-07-01',
@@ -78,22 +64,7 @@
           title: 'Landing Page New Desing',
           description: 'The current design is looks bad',
           priority: 20,
-          assignee: [
-            people.value[Math.floor(Math.random() * people.value.length)],
-          ],
-          labels: [
-            // need to display labels on front
-            {
-              id: 1,
-              name: 'Design',
-              color: '#F2C94C',
-            },
-            {
-              id: 2,
-              name: 'Frontend',
-              color: '#2F80ED',
-            },
-          ],
+          assignee: [people.value[0], people.value[1]],
           task: {
             total: 2,
             completed: 1,
@@ -120,23 +91,7 @@
           description:
             'When you swap -> disconnect -> connect -> swap again, it will not work',
           priority: 30,
-          assignee: [
-            people.value[Math.floor(Math.random() * people.value.length)],
-            people.value[Math.floor(Math.random() * people.value.length)],
-          ],
-          labels: [
-            // need to display labels on front
-            {
-              id: 1,
-              name: 'Design',
-              color: '#F2C94C',
-            },
-            {
-              id: 2,
-              name: 'Frontend',
-              color: '#2F80ED',
-            },
-          ],
+          assignee: [people.value[3]],
           attachments: 1,
           due_date: 'Due Today',
           created_at: '2021-07-01',
@@ -146,22 +101,7 @@
           id: 4,
           title: 'Login is not working',
           priority: 30,
-          assignee: [
-            people.value[Math.floor(Math.random() * people.value.length)],
-          ],
-          labels: [
-            // need to display labels on front
-            {
-              id: 1,
-              name: 'Design',
-              color: '#F2C94C',
-            },
-            {
-              id: 2,
-              name: 'Frontend',
-              color: '#2F80ED',
-            },
-          ],
+          assignee: [],
           attachments: 2,
           due_date: 'Overdue',
           created_at: '2021-07-01',
@@ -177,22 +117,7 @@
           id: 5,
           title: 'Login Page Update',
           priority: 20,
-          assignee: [
-            people.value[Math.floor(Math.random() * people.value.length)],
-          ],
-          labels: [
-            // need to display labels on front
-            {
-              id: 1,
-              name: 'Design',
-              color: '#F2C94C',
-            },
-            {
-              id: 2,
-              name: 'Frontend',
-              color: '#2F80ED',
-            },
-          ],
+          assignee: [people.value[4]],
           task: {
             total: 5,
             completed: 4,
@@ -215,8 +140,8 @@
       class="grid grid-flow-col grid-cols-[unset] grid-rows-[unset] gap-x-6 overflow-scroll px-6 hide-scrollbar"
     >
       <div
-        v-for="(item, index) in lists"
-        :key="index"
+        v-for="item in lists"
+        :key="item.id"
         class="flex w-64 flex-[0_0_auto] flex-col space-y-4"
       >
         <div
@@ -283,12 +208,12 @@
               </div>
               <div class="flex justify-between">
                 <div
-                  v-if="element.assignee && element.assignee.length"
+                  v-if="element.assignee && element.assignee[0]"
                   class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
                 >
                   <img
-                    v-for="(assignee, index) in element.assignee"
-                    :key="index"
+                    v-for="assignee in element.assignee"
+                    :key="assignee.id"
                     alt=""
                     class="h-7 w-7 rounded-full border-2 border-white"
                     :src="assignee.image"
