@@ -2,7 +2,7 @@
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  mode: 'jit',
+  darkMode: 'class',
   content: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
