@@ -6,7 +6,7 @@
   <Menu as="div" class="relative">
     <MenuButton
       as="button"
-      class="flex w-full items-center space-x-2 rounded-lg p-2 transition-all duration-200 hover:bg-gray-100"
+      class="flex w-full items-center space-x-2 rounded-lg p-2 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-secondary-accent"
     >
       <LanguageIcon class="h-6 w-6" />
       <span class="font-semibold uppercase">{{ $i18n.locale }}</span>

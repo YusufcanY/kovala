@@ -20,7 +20,7 @@
 </script>
 <template>
   <button
-    class="flex items-center space-x-2 rounded-lg p-2 hover:bg-gray-100"
+    class="flex items-center space-x-2 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-secondary-accent"
     @click="changeTheme"
   >
     <MoonIcon v-if="isDark" class="h-6 w-6" />

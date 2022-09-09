@@ -52,7 +52,7 @@
 <template>
   <div class="relative w-full">
     <button
-      class="flex w-full items-center justify-between rounded-2xl border-2 border-[#F3F4F6] px-4 py-2"
+      class="flex w-full items-center justify-between rounded-2xl border-2 border-[#F3F4F6] px-4 py-2 dark:border-opacity-10"
       @click="toggleWorkspaceDropdown()"
     >
       <div class="flex space-x-1">
@@ -76,12 +76,12 @@
     <Transition name="dropdown">
       <div
         v-show="workspaceDropdownOpen"
-        class="absolute top-0 left-0 z-10 mt-16 flex w-full flex-col space-y-2 bg-white"
+        class="absolute top-0 left-0 z-10 mt-16 flex w-full flex-col space-y-2 bg-white dark:bg-dark-page-body"
       >
         <button
           v-for="item in getWorkspacesWithoutActive"
           :key="item.id"
-          class="relative flex items-center space-x-2 rounded-2xl border border-primary-accent border-opacity-0 bg-white p-4 shadow-lg transition-all duration-200 hover:border-opacity-100"
+          class="relative flex items-center space-x-2 rounded-2xl border border-primary-accent border-opacity-0 bg-white p-4 shadow-lg transition-all duration-200 hover:border-opacity-100 dark:border-2 dark:border-[#F3F4F6] dark:border-opacity-10 dark:bg-dark-page-body dark:shadow-none"
           @click="setActiveWorkspace(item.id)"
         >
           <img alt="" class="h-8" :src="item.icon" />

@@ -3,6 +3,14 @@ button {
   outline: none;
 }
 body {
+  transition: 0.3s;
+}
+html.dark body {
+  background-color: #191919;
+  color: #f0f0f0;
+}
+html.light body {
+  background-color: #ffffff;
   color: #002e3b;
 }
 /* ===== Scrollbar CSS ===== */

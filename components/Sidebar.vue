@@ -50,7 +50,7 @@
 <template>
   <div class="flex flex-col justify-between px-4">
     <div class="flex flex-col">
-      <h2 class="py-4 text-center text-3xl font-black text-gray-800">KOVALA</h2>
+      <h2 class="py-4 text-center text-3xl font-black">KOVALA</h2>
       <WorkspaceSelect />
       <div class="mt-8 space-y-4">
         <div v-for="(item, index) in navItems" :key="index" class="w-full">
