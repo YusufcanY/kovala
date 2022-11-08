@@ -22,7 +22,7 @@
             : 'bg-red-100 text-red-500'
         "
       >
-        {{ $t(String(issue.priority)) }}
+        {{ $t('priority.' + String(issue.priority)) }}
       </span>
     </div>
     <div>

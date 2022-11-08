@@ -59,5 +59,6 @@
   "vetur.validation.script": false,
   "vetur.validation.style": false,
   "vetur.validation.template": false,
-  "vetur.completion.autoImport": false
+  "vetur.completion.autoImport": false,
+  "i18n-ally.localesPaths": ["locales", "components/messages"]
 }

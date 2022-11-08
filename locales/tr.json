@@ -11,6 +11,11 @@
     "messages": "Mesajlar",
     "settings": "Ayarlar"
   },
+  "priority": {
+    "10": "DÜŞÜK",
+    "20": "ORTA",
+    "30": "YÜKSEK"
+  },
   "theme": "Tema",
   "online": "çevrimiçi",
   "en": "English",
