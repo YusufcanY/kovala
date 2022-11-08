@@ -12,7 +12,7 @@
     <div class="col-span-4">
       <div class="group relative inline-block">
         <input
-          class="rounded-xl py-2 pl-10 pr-2 ring-primary-accent transition-all duration-200 focus:ring"
+          class="rounded-xl py-2 pl-10 pr-2 ring-primary-accent transition-all duration-200 focus:ring dark:bg-dark-page-body"
           placeholder="Search for anything"
           type="text"
         />
@@ -33,23 +33,23 @@
         <span>New Board</span>
       </button>
       <button
-        class="relative rounded-lg bg-white p-1 ring-primary-accent transition-all duration-200 hover:ring"
+        class="relative rounded-lg bg-white p-1 ring-primary-accent transition-all duration-200 hover:ring dark:bg-dark-page-body"
       >
         <BellIcon class="h-8 w-8 text-primary-accent" />
         <span
-          class="absolute top-1 right-2 h-3 w-3 rounded-full border-2 border-white bg-primary-accent"
+          class="absolute top-1 right-2 h-3 w-3 rounded-full border-2 border-white bg-primary-accent dark:border-dark-page-body"
         />
       </button>
       <button
-        class="relative rounded-lg bg-white p-1 ring-primary-accent transition-all duration-200 hover:ring"
+        class="relative rounded-lg bg-white p-1 ring-primary-accent transition-all duration-200 hover:ring dark:bg-dark-page-body"
       >
         <ChatBubbleLeftIcon class="h-8 w-8 -scale-x-[1] text-primary-accent" />
         <span
-          class="absolute top-1 right-1 h-3 w-3 rounded-full border-2 border-white bg-primary-accent"
+          class="absolute top-1 right-1 h-3 w-3 rounded-full border-2 border-white bg-primary-accent dark:border-dark-page-body"
         />
       </button>
       <button
-        class="relative rounded-lg bg-white p-1 ring-primary-accent transition-all duration-200 hover:ring"
+        class="relative rounded-lg bg-white p-1 ring-primary-accent transition-all duration-200 hover:ring dark:bg-dark-page-body"
       >
         <EllipsisHorizontalIcon class="h-8 w-8 text-primary-accent" />
       </button>

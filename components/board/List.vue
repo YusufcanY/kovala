@@ -18,7 +18,7 @@
       <span class="text-xl font-bold">{{ list.name }}</span>
       <div class="flex items-center space-x-2">
         <button
-          class="rounded-lg p-1 transition-colors duration-200 hover:bg-gray-100"
+          class="rounded-lg p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-dark-foreground"
         >
           <EllipsisHorizontalIcon class="h-5 w-5" />
         </button>

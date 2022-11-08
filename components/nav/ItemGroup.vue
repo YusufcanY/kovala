@@ -14,7 +14,7 @@
 <template>
   <div>
     <button
-      class="flex w-full items-center justify-between rounded-2xl bg-primary-accent bg-opacity-0 py-2 px-4 transition-all duration-300 hover:bg-opacity-10"
+      class="flex w-full items-center justify-between rounded-xl bg-primary-accent bg-opacity-0 py-2 px-4 transition-all duration-300 hover:bg-opacity-10"
       @click="toggleDropdown()"
     >
       <div class="flex items-center space-x-2">
@@ -34,21 +34,24 @@
           class="group relative flex items-center space-x-2 rounded-lg bg-primary-accent py-2 px-4 transition-all duration-300"
           :class="
             $route.path === child.route
-              ? 'font-medium text-white'
+              ? 'font-medium'
               : 'bg-opacity-0 hover:bg-opacity-10'
           "
           :to="child.route"
         >
           <div
-            class="absolute left-0 top-1/2 h-3 -translate-y-1/2 rounded-r-lg transition-all duration-200"
+            class="absolute left-0 top-1/2 h-3 w-1 -translate-y-1/2 rounded-lg transition-all duration-200"
             :class="
               $route.path === child.route
-                ? 'w-2 bg-white opacity-60'
-                : 'w-1 bg-primary-accent group-hover:w-2'
+                ? 'translate-x-1 bg-white opacity-60'
+                : 'bg-primary-accent group-hover:translate-x-1'
             "
           ></div>
           <div
-            :class="{ 'rounded-full bg-white': $route.path === child.route }"
+            :class="{
+              'rounded-full bg-white dark:bg-opacity-60':
+                $route.path === child.route,
+            }"
           >
             <img
               class="h-6 w-6 p-1 transition-all duration-200"

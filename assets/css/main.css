@@ -13,24 +13,35 @@ html.light body {
   background-color: #ffffff;
   color: #002e3b;
 }
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
+/* light mode scrollbar */
+html.light * {
   scrollbar-width: auto;
   scrollbar-color: #002e3b #ffffff;
 }
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
+html.light *::-webkit-scrollbar {
   width: 13px;
 }
-
-*::-webkit-scrollbar-track {
+html.light *::-webkit-scrollbar-track {
   background: #ffffff;
 }
-
-*::-webkit-scrollbar-thumb {
+html.light *::-webkit-scrollbar-thumb {
   background-color: #002e3b;
   border-radius: 16px;
   border: 3px solid #ffffff;
+}
+/* dark mode scrollbar */
+html.dark * {
+  scrollbar-width: auto;
+  scrollbar-color: #343434 #191919;
+}
+html.dark *::-webkit-scrollbar {
+  width: 13px;
+}
+html.dark *::-webkit-scrollbar-track {
+  background: #191919;
+}
+html.dark *::-webkit-scrollbar-thumb {
+  background-color: #343434;
+  border-radius: 16px;
+  border: 3px solid #191919;
 }

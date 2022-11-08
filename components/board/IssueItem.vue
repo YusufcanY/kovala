@@ -18,10 +18,10 @@
         class="rounded-md px-2 py-1 text-xs font-bold"
         :class="
           issue.priority === 10
-            ? 'bg-green-100 text-primary-accent'
+            ? 'bg-green-100 text-primary-accent dark:bg-green-900'
             : issue.priority === 20
-            ? 'bg-yellow-50 text-yellow-500'
-            : 'bg-red-100 text-red-500'
+            ? 'bg-yellow-50 text-yellow-500 dark:bg-yellow-900'
+            : 'bg-red-100 text-red-500 dark:bg-red-900'
         "
       >
         {{ $t('priority.' + String(issue.priority)) }}
@@ -40,12 +40,12 @@
         class="rounded-md border px-2 py-1 text-xs font-medium"
         :class="
           issue.due_date === 'Due Today'
-            ? 'border-yellow-500 bg-yellow-50 text-yellow-500'
+            ? 'border-yellow-500 bg-yellow-50 text-yellow-500 dark:bg-yellow-900'
             : issue.due_date === 'Overdue'
-            ? 'border-red-500 bg-red-100 text-red-500'
+            ? 'border-red-500 bg-red-50 text-red-500 dark:bg-red-900'
             : issue.due_date === 'Complete'
-            ? 'border-green-500 bg-green-100 text-green-500'
-            : 'border-[#e6e6f0] bg-[#f9f9fb] text-[#1b1e49]'
+            ? 'border-green-500 bg-green-50 text-green-500 dark:bg-green-900'
+            : 'border-[#e6e6f0] bg-[#f9f9fb] text-[#1b1e49] dark:border-opacity-0 dark:bg-dark-foreground dark:text-[#f0f0f0]'
         "
         >{{ issue.due_date }}</span
       >
@@ -60,12 +60,12 @@
             v-for="(assignee, index) in issue.assignee"
             :key="index"
             alt=""
-            class="h-7 w-7 rounded-full border-2 border-white"
+            class="h-7 w-7 rounded-full border-2 border-white dark:border-dark-page-body"
             :src="assignee.image"
           />
         </div>
         <UserPlusIcon
-          class="h-8 w-8 rounded-full border-[3px] border-white bg-primary-accent bg-opacity-10 p-1 text-primary-accent"
+          class="h-8 w-8 rounded-full border-[3px] border-white bg-primary-accent bg-opacity-10 p-1 text-primary-accent dark:border-dark-page-body"
         />
       </div>
       <div class="flex items-center space-x-2">
