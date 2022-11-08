@@ -55,7 +55,12 @@
   >
     <template #item="{ element }">
       <button
-        class="relative flex w-full items-center justify-between p-2 transition-all duration-200 hover:bg-gray-100 active:bg-white"
+        class="relative flex w-full items-center justify-between p-2 transition-all duration-200"
+        :class="
+          activeMessageID === element.id
+            ? 'bg-primary-accent'
+            : 'hover:bg-gray-100 active:bg-white dark:hover:bg-white dark:hover:bg-opacity-5 dark:active:bg-dark-page-body'
+        "
         @click="activeMessageID = element.id"
       >
         <div class="grid w-full grid-cols-16 items-center space-x-2">
@@ -67,18 +72,41 @@
             />
             <div
               v-show="element.is_online"
-              class="absolute top-0 left-6 h-[12px] w-[12px] rounded-full border-2 border-white bg-primary-accent"
+              class="absolute top-0 left-6 h-[12px] w-[12px] rounded-full border-2"
+              :class="
+                activeMessageID === element.id
+                  ? 'border-primary-accent bg-white'
+                  : 'border-white bg-primary-accent dark:border-dark-page-body'
+              "
             ></div>
           </div>
           <div class="col-span-14 items-start">
             <div class="flex w-full justify-between">
-              <span class="truncate text-sm font-bold">{{ element.from }}</span>
-              <span class="whitespace-nowrap text-xs text-[#AEAFC1]">
+              <span
+                class="truncate text-sm font-bold"
+                :class="{ 'text-white': activeMessageID === element.id }"
+                >{{ element.from }}</span
+              >
+              <span
+                class="whitespace-nowrap text-xs"
+                :class="
+                  activeMessageID === element.id
+                    ? 'text-white'
+                    : 'text-[#AEAFC1]'
+                "
+              >
                 {{ element.time }}</span
               >
             </div>
             <div class="flex items-center justify-between">
-              <span class="truncate text-xs text-[#AEAFC1]">
+              <span
+                class="truncate text-xs"
+                :class="
+                  activeMessageID === element.id
+                    ? 'text-white'
+                    : 'text-[#AEAFC1]'
+                "
+              >
                 <span v-if="element.is_last_message_from_you" class="font-bold"
                   >You:</span
                 >{{ element.message }}</span

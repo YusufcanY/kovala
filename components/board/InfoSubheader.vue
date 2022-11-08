@@ -28,27 +28,27 @@
           >
             <img
               alt=""
-              class="h-9 w-9 rounded-full border-2 border-white"
+              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memojis/memoji-1.jpg"
             />
             <img
               alt=""
-              class="h-9 w-9 rounded-full border-2 border-white"
+              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memojis/memoji-3.jpg"
             />
             <img
               alt=""
-              class="h-9 w-9 rounded-full border-2 border-white"
+              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memojis/memoji-2.jpg"
             />
             <img
               alt=""
-              class="h-9 w-9 rounded-full border-2 border-white"
+              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memojis/memoji-4.jpg"
             />
             <img
               alt=""
-              class="h-9 w-9 rounded-full border-2 border-white"
+              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memojis/memoji-5.jpg"
             />
           </div>
