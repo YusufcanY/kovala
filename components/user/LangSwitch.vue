@@ -12,7 +12,7 @@
       <span class="font-semibold uppercase">{{ $i18n.locale }}</span>
     </MenuButton>
     <MenuItems
-      class="absolute left-0 bottom-0 mb-12 w-full origin-bottom-left divide-y divide-gray-100 rounded-md bg-white shadow-lg"
+      class="absolute left-0 bottom-0 mb-12 w-full origin-bottom-left rounded-md bg-white shadow-lg dark:bg-dark-foreground"
     >
       <div class="px-1 py-1">
         <MenuItem
@@ -22,7 +22,7 @@
         >
           <button
             :class="[
-              { 'bg-gray-100': active },
+              { 'bg-gray-100 dark:bg-dark-page-body': active },
               'flex w-full items-center space-x-1 rounded-md px-2 py-2 text-sm transition-all duration-200',
             ]"
             @click="$i18n.locale = item"
