@@ -17,6 +17,7 @@ module.exports = {
         'secondary-accent': '#002E3B',
         'page-foreground': '#F7F8FA',
         'dark-page-body': '#191919',
+        'dark-foreground': '#201f1f',
       },
       gridTemplateColumns: {
         16: 'repeat(16, minmax(0, 1fr))',

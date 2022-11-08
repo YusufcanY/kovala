@@ -10,7 +10,9 @@
   }>()
 </script>
 <template>
-  <button class="w-full space-y-2 rounded-xl bg-white p-4 text-left">
+  <button
+    class="w-full space-y-2 rounded-xl bg-white p-4 text-left dark:bg-dark-page-body"
+  >
     <div>
       <span
         class="rounded-md px-2 py-1 text-xs font-bold"

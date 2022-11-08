@@ -6,7 +6,7 @@
     <div class="col-span-8 flex flex-col space-y-1">
       <span class="text-sm font-medium text-[#86889F]">BOARDS</span>
       <div class="flex items-center space-x-2">
-        <div class="rounded-full bg-white">
+        <div class="rounded-full bg-white dark:bg-dark-page-body">
           <img class="h-9 w-9 p-1" src="/backend.png" />
         </div>
         <span class="text-xl font-bold">Frontend</span>

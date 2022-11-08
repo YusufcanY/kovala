@@ -26,7 +26,7 @@
     },
   ])
   const activeWorkspaceId = useState('activeWorkspaceId', () => 1)
-  const workspaceDropdownOpen = ref(false)
+  const workspaceDropdownOpen = useState('workspaceDropdownOpen', () => false)
   const toggleWorkspaceDropdown = () => {
     workspaceDropdownOpen.value = !workspaceDropdownOpen.value
   }
@@ -81,7 +81,7 @@
         <button
           v-for="item in getWorkspacesWithoutActive"
           :key="item.id"
-          class="relative flex items-center space-x-2 rounded-2xl border border-primary-accent border-opacity-0 bg-white p-4 shadow-lg transition-all duration-200 hover:border-opacity-100 dark:border-2 dark:border-[#F3F4F6] dark:border-opacity-10 dark:bg-dark-page-body dark:shadow-none"
+          class="relative flex items-center space-x-2 rounded-2xl border-2 border-[#F3F4F6] bg-white p-4 transition-all duration-200 hover:border-opacity-100 dark:border-opacity-10 dark:bg-dark-page-body"
           @click="setActiveWorkspace(item.id)"
         >
           <img alt="" class="h-8" :src="item.icon" />

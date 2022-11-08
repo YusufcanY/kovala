@@ -13,7 +13,7 @@
 <template>
   <div class="flex min-w-[16rem] flex-[0_0_auto] flex-col space-y-4">
     <div
-      class="flex items-center justify-between whitespace-nowrap rounded-xl bg-white p-4"
+      class="flex items-center justify-between whitespace-nowrap rounded-xl bg-white p-4 dark:bg-dark-page-body"
     >
       <span class="text-xl font-bold">{{ list.name }}</span>
       <div class="flex items-center space-x-2">
