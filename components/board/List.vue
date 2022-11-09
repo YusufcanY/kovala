@@ -52,29 +52,47 @@
         issueStore.updateIssue(issue.id, ghost)
       })
     } else if (event.removed) {
-      setTimeout(() => {
-        const issuesAfterRemovedIssue = issueStore.issues.filter(
+      const issuesAfterRemovedIssue = issueStore.issues.filter(
+        (issue) =>
+          issue.index_in_board > event.removed.element.index_in_board &&
+          issue.board_id === props.list.id
+      )
+      issuesAfterRemovedIssue.forEach((issue) => {
+        const ghost = issue
+        ghost.index_in_board = issue.index_in_board - 1
+        issueStore.updateIssue(issue.id, ghost)
+      })
+    } else if (event.moved) {
+      console.log('event.moved :>> ', event.moved)
+      const ghost = event.moved.element
+      ghost.index_in_board = event.moved.newIndex
+      issueStore.updateIssue(event.moved.element.id, ghost)
+      if (event.moved.newIndex > event.moved.oldIndex) {
+        const issuesAfterMovedIssue = issueStore.issues.filter(
           (issue) =>
-            issue.index_in_board > event.removed.element.index_in_board &&
-            issue.board_id === props.list.id
+            issue.index_in_board > event.moved.oldIndex &&
+            issue.index_in_board <= event.moved.newIndex &&
+            issue.board_id === props.list.id &&
+            issue.id !== event.moved.element.id
         )
-        issuesAfterRemovedIssue.forEach((issue) => {
+        issuesAfterMovedIssue.forEach((issue) => {
           const ghost = issue
           ghost.index_in_board = issue.index_in_board - 1
           issueStore.updateIssue(issue.id, ghost)
         })
-      }, 1000)
-    } else if (event.moved) {
-      const replacedIssue = issueStore.issues.find(
-        (issue) => issue.index_in_board === event.moved.newIndex
-      )
-      if (replacedIssue) {
-        const ghostOfReplacedIssue = replacedIssue
-        ghostOfReplacedIssue.index_in_board = event.moved.oldIndex
-        const ghost = event.moved.element
-        ghost.index_in_board = event.moved.newIndex
-        issueStore.updateIssue(replacedIssue.id, ghostOfReplacedIssue)
-        issueStore.updateIssue(event.moved.element.id, ghost)
+      } else {
+        const issuesAfterMovedIssue = issueStore.issues.filter(
+          (issue) =>
+            issue.index_in_board >= event.moved.newIndex &&
+            issue.index_in_board < event.moved.oldIndex &&
+            issue.board_id === props.list.id &&
+            issue.id !== event.moved.element.id
+        )
+        issuesAfterMovedIssue.forEach((issue) => {
+          const ghost = issue
+          ghost.index_in_board = issue.index_in_board + 1
+          issueStore.updateIssue(issue.id, ghost)
+        })
       }
     }
   }
