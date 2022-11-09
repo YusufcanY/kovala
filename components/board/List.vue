@@ -52,42 +52,50 @@
         issueStore.updateIssue(issue.id, ghost)
       })
     } else if (event.removed) {
-      const issuesAfterRemovedIssue = issueStore.issues.filter(
-        (issue) =>
-          issue.index_in_board > event.removed.element.index_in_board &&
-          issue.board_id === props.list.id
-      )
+      const issuesAfterRemovedIssue = issueStore.issues.filter((issue) => {
+        if (event.removed) {
+          return (
+            issue.index_in_board > event.removed.element.index_in_board &&
+            issue.board_id === props.list.id
+          )
+        } else return false
+      })
       issuesAfterRemovedIssue.forEach((issue) => {
         const ghost = issue
         ghost.index_in_board = issue.index_in_board - 1
         issueStore.updateIssue(issue.id, ghost)
       })
     } else if (event.moved) {
-      console.log('event.moved :>> ', event.moved)
       const ghost = event.moved.element
       ghost.index_in_board = event.moved.newIndex
       issueStore.updateIssue(event.moved.element.id, ghost)
       if (event.moved.newIndex > event.moved.oldIndex) {
-        const issuesAfterMovedIssue = issueStore.issues.filter(
-          (issue) =>
-            issue.index_in_board > event.moved.oldIndex &&
-            issue.index_in_board <= event.moved.newIndex &&
-            issue.board_id === props.list.id &&
-            issue.id !== event.moved.element.id
-        )
+        const issuesAfterMovedIssue = issueStore.issues.filter((issue) => {
+          if (event.moved) {
+            return (
+              issue.index_in_board > event.moved.oldIndex &&
+              issue.index_in_board <= event.moved.newIndex &&
+              issue.board_id === props.list.id &&
+              issue.id !== event.moved.element.id
+            )
+          } else return false
+        })
         issuesAfterMovedIssue.forEach((issue) => {
           const ghost = issue
           ghost.index_in_board = issue.index_in_board - 1
           issueStore.updateIssue(issue.id, ghost)
         })
       } else {
-        const issuesAfterMovedIssue = issueStore.issues.filter(
-          (issue) =>
-            issue.index_in_board >= event.moved.newIndex &&
-            issue.index_in_board < event.moved.oldIndex &&
-            issue.board_id === props.list.id &&
-            issue.id !== event.moved.element.id
-        )
+        const issuesAfterMovedIssue = issueStore.issues.filter((issue) => {
+          if (event.moved) {
+            return (
+              issue.index_in_board >= event.moved.newIndex &&
+              issue.index_in_board < event.moved.oldIndex &&
+              issue.board_id === props.list.id &&
+              issue.id !== event.moved.element.id
+            )
+          } else return false
+        })
         issuesAfterMovedIssue.forEach((issue) => {
           const ghost = issue
           ghost.index_in_board = issue.index_in_board + 1

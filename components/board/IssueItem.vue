@@ -31,7 +31,6 @@
       <div class="leading-5">
         <input
           v-if="issue.is_editing"
-          v-model="issue.title"
           class="rounded-xl border-2 border-primary-accent border-opacity-0 p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
           type="text"
         />
@@ -67,7 +66,7 @@
             :key="index"
             alt=""
             class="h-7 w-7 rounded-full border-2 border-white dark:border-dark-page-body"
-            :src="assignee.image"
+            :src="String(assignee)"
           />
         </div>
         <UserPlusIcon

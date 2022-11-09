@@ -30,7 +30,6 @@
     },
   ]) */
   const boards = computed(() => {
-    console.log(board.getBoardsWithIssues)
     return board.getBoardsWithIssues
   })
 </script>
