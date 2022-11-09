@@ -19,7 +19,6 @@
       foundList.issues.unshift({
         id: 6,
         title: 'New Issue',
-        priority: 10,
         assignee: [],
         is_editing: true,
         due_date: 'Complete',

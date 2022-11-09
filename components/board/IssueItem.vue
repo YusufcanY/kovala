@@ -13,7 +13,7 @@
   <button
     class="w-full space-y-2 rounded-xl bg-white p-4 text-left dark:bg-dark-page-body"
   >
-    <div>
+    <div v-if="issue.priority">
       <span
         class="rounded-md px-2 py-1 text-xs font-bold"
         :class="
@@ -31,9 +31,9 @@
       <div class="leading-5">
         <input
           v-if="issue.is_editing"
+          v-model="issue.title"
           class="rounded-xl border-2 border-primary-accent border-opacity-0 p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
           type="text"
-          :value="issue.title"
         />
         <span v-else class="font-semibold">{{ issue.title }}</span>
       </div>

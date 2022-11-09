@@ -4,7 +4,7 @@ interface Issue {
   title: string
   description?: string
   //   status: 10 | 20 | 30 | 40 | 50 // 10: To Do, 20: In Progress, 30: Resolved, 40: Closed, 50: Reopened
-  priority: 10 | 20 | 30 // 10: Low, 20: Medium, 30: High
+  priority?: 10 | 20 | 30 // 10: Low, 20: Medium, 30: High
   assignee?: Person[]
   due_date: string
   created_at: string
