@@ -6,7 +6,8 @@ interface Issue {
   //   status: 10 | 20 | 30 | 40 | 50 // 10: To Do, 20: In Progress, 30: Resolved, 40: Closed, 50: Reopened
   priority?: 10 | 20 | 30 // 10: Low, 20: Medium, 30: High
   assignee?: number[]
-  board_id?: number
+  board_id: number
+  index_in_board: number
   due_date: string
   created_at: string
   updated_at: string

@@ -1,8 +1,38 @@
 <script setup lang="ts">
-  import type { List } from '@/types/Board'
+  import { useBoardStore } from '@/store/boards'
 
-  const lists = ref<List[]>([])
-  provide('lists', lists)
+  const board = useBoardStore()
+  /*   const people = useState<Person[]>('people', () => [
+    {
+      id: 1,
+      name: 'Ymir Vision',
+      image: '/memojis/memoji-1.jpg',
+    },
+    {
+      id: 2,
+      name: 'John Doe',
+      image: '/memojis/memoji-3.jpg',
+    },
+    {
+      id: 3,
+      name: 'Alcoholic German',
+      image: '/memojis/memoji-5.jpg',
+    },
+    {
+      id: 4,
+      name: 'Fart Beeday',
+      image: '/memojis/memoji-4.jpg',
+    },
+    {
+      id: 5,
+      name: 'Smith Backbone',
+      image: '/memojis/memoji-2.jpg',
+    },
+  ]) */
+  const boards = computed(() => {
+    console.log(board.getBoardsWithIssues)
+    return board.getBoardsWithIssues
+  })
 </script>
 <template>
   <div class="h-full">
@@ -13,7 +43,7 @@
     <div
       class="grid grid-flow-col grid-cols-[unset] grid-rows-[unset] gap-x-6 overflow-scroll px-6 pb-6 hide-scrollbar"
     >
-      <BoardList v-for="(item, index) in lists" :key="index" :list="item" />
+      <BoardList v-for="(item, index) in boards" :key="index" :list="item" />
     </div>
   </div>
 </template>

@@ -8,6 +8,8 @@ export const useIssueStore = defineStore('issues', {
         id: 1,
         title: 'Landing Page New Desing',
         description: 'The current design is looks bad',
+        board_id: 10,
+        index_in_board: 0,
         priority: 20,
         assignee: [],
         task: {
@@ -23,6 +25,8 @@ export const useIssueStore = defineStore('issues', {
         id: 2,
         title: 'Feature: Adding dark mode',
         priority: 10,
+        board_id: 10,
+        index_in_board: 2,
         due_date: 'Dec 31, 2022',
         created_at: '2021-07-01',
         updated_at: '2021-07-01',
@@ -33,6 +37,8 @@ export const useIssueStore = defineStore('issues', {
         description:
           'When you swap -> disconnect -> connect -> swap again, it will not work',
         priority: 30,
+        board_id: 10,
+        index_in_board: 1,
         assignee: [],
         attachments: 1,
         due_date: 'Due Today',
@@ -65,13 +71,14 @@ export const useIssueStore = defineStore('issues', {
     ] as Issue[],
   }),
   actions: {
-    createIssue(title: string, boardId?: number, assignees?: number[]) {
+    createIssue(title: string, boardId: number, assignees?: number[]) {
       this.issues.push({
         id: this.issues[this.issues.length - 1].id + 1,
         title,
         is_editing: true,
         ...(assignees ? { assignee: assignees } : {}),
-        ...(boardId ? { board_id: boardId } : {}),
+        board_id: boardId || 0,
+        index_in_board: 0,
         due_date: 'Sep 20, 2022',
         created_at: '2021-07-01',
         updated_at: '2021-07-01',
