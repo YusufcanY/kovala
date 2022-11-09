@@ -29,7 +29,13 @@
     </div>
     <div>
       <div class="leading-5">
-        <span class="font-semibold">{{ issue.title }}</span>
+        <input
+          v-if="issue.is_editing"
+          class="rounded-xl border-2 border-primary-accent border-opacity-0 p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
+          type="text"
+          :value="issue.title"
+        />
+        <span v-else class="font-semibold">{{ issue.title }}</span>
       </div>
       <div class="leading-5">
         <span class="text-xs text-[#86889F]">{{ issue.description }}</span>
@@ -78,6 +84,13 @@
           <span class="font-medium"
             >{{ issue.task.completed }}/{{ issue.task.total }}</span
           >
+        </div>
+        <div v-if="issue.is_editing">
+          <button
+            class="rounded-md bg-primary-accent px-2 font-bold text-white"
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>

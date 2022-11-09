@@ -6,7 +6,7 @@
     <div class="grid h-screen grid-cols-16 p-2 pl-0">
       <Sidebar class="col-span-3" />
       <div
-        class="col-span-13 h-full rounded-2xl bg-page-foreground dark:bg-dark-foreground"
+        class="col-span-13 h-full overflow-y-scroll rounded-2xl bg-page-foreground hide-scrollbar dark:bg-dark-foreground"
       >
         <NuxtPage />
       </div>

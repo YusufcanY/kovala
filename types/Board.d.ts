@@ -14,6 +14,7 @@ interface Issue {
     completed: number
   }
   attachments?: number
+  is_editing?: boolean
 }
 interface List {
   id: number
