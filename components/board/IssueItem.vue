@@ -109,7 +109,7 @@
             class="rounded-md bg-primary-accent px-2 font-bold text-white"
             @click="updateIssue"
           >
-            Save
+            {{ $t('save') }}
           </button>
         </div>
       </div>
