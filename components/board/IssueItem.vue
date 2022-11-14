@@ -2,6 +2,7 @@
   import {
     CheckCircleIcon,
     PaperClipIcon,
+    PencilSquareIcon,
     UserPlusIcon,
   } from '@heroicons/vue/24/outline'
   import { onClickOutside } from '@vueuse/core'
@@ -19,15 +20,15 @@
     issueStore.updateIssue(props.issue.id, ghost)
   }
   const inputRef = ref(null)
-  onClickOutside(inputRef, () => {
+  onClickOutside(inputRef, () => toggleIssueEditing())
+  const toggleIssueEditing = () => {
     const ghost = { ...props.issue }
-    ghost.is_editing = false
+    ghost.is_editing = true
     issueStore.updateIssue(props.issue.id, ghost)
-  })
+  }
 </script>
 <template>
   <button
-    ref="inputRef"
     class="w-full space-y-2 rounded-xl bg-white p-4 text-left dark:bg-dark-page-body"
   >
     <div v-if="props.issue.priority">
@@ -48,11 +49,22 @@
       <div class="leading-5">
         <input
           v-if="props.issue.is_editing"
+          ref="inputRef"
           v-model="titleValue"
-          class="rounded-xl border-2 border-primary-accent border-opacity-0 p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
+          class="rounded-xl border-2 border-primary-accent border-opacity-0 bg-page-foreground p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
           type="text"
         />
-        <span v-else class="font-semibold">{{ props.issue.title }}</span>
+
+        <div
+          v-else
+          class="group relative flex items-center space-x-1"
+          @click="toggleIssueEditing()"
+        >
+          <span class="font-semibold">{{ props.issue.title }}</span>
+          <PencilSquareIcon
+            class="inline h-5 w-5 opacity-0 transition-opacity duration-100 group-hover:opacity-100"
+          />
+        </div>
       </div>
       <div class="leading-5">
         <span class="text-xs text-[#86889F]">{{

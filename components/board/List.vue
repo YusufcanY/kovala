@@ -64,7 +64,7 @@
         v-if="props.list.is_editing"
         ref="inputRef"
         v-model="nameValue"
-        class="w-full rounded-md px-1 text-xl font-bold transition-all duration-200 dark:bg-dark-foreground"
+        class="w-full rounded-md bg-page-foreground px-1 text-xl font-bold transition-all duration-200 dark:bg-dark-foreground"
         type="text"
       />
       <button
