@@ -23,7 +23,7 @@
   onClickOutside(inputRef, () => toggleIssueEditing())
   const toggleIssueEditing = () => {
     const ghost = { ...props.issue }
-    ghost.is_editing = true
+    ghost.is_editing = !ghost.is_editing
     issueStore.updateIssue(props.issue.id, ghost)
   }
 </script>
