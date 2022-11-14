@@ -7,7 +7,7 @@
     XMarkIcon,
   } from '@heroicons/vue/24/outline'
   import Draggable from 'vuedraggable'
-  import { onClickOutside } from '@vueuse/core'
+  import { onClickOutside, useFocus } from '@vueuse/core'
   import type { Issue, List } from '@/types/Board'
   import { useBoardStore } from '@/store/boards'
   import { useIssueStore } from '@/store/issues'
@@ -50,15 +50,28 @@
   }
 
   const inputRef = ref(null)
-  onClickOutside(inputRef, () => boardStore.toggleBoardEditing(props.list.id))
+  const { focused } = useFocus(inputRef)
+
+  onClickOutside(inputRef, () => toggleIssueEditing())
   const addNewIssue = () => {
     issueStore.createIssue('New Issue', props.list.id)
   }
+  const toggleIssueEditing = async () => {
+    const ghost = { ...props.list }
+    ghost.is_editing = !ghost.is_editing
+    await boardStore.updateBoard(props.list.id, ghost)
+  }
+  watchEffect(() => {
+    if (props.list.is_editing) {
+      focused.value = true
+    }
+  })
 </script>
 <template>
   <div class="flex min-w-[18rem] flex-1 flex-col space-y-4">
-    <div
+    <form
       class="flex items-center justify-between space-x-2 whitespace-nowrap rounded-xl bg-white p-4 dark:bg-dark-page-body"
+      @submit.prevent="updateBoardName()"
     >
       <input
         v-if="props.list.is_editing"
@@ -70,7 +83,7 @@
       <button
         v-else
         class="group relative flex items-center space-x-1"
-        @click="boardStore.toggleBoardEditing(props.list.id)"
+        @click="toggleIssueEditing()"
       >
         <span class="text-xl font-bold">{{ props.list.name }}</span>
         <PencilSquareIcon
@@ -85,7 +98,7 @@
         </button>
         <button
           class="rounded-lg bg-primary-accent bg-opacity-10 p-1"
-          @click="updateBoardName()"
+          type="submit"
         >
           <CheckIcon class="h-5 w-5 text-primary-accent" />
         </button>
@@ -103,7 +116,7 @@
           <PlusIcon class="h-5 w-5 text-primary-accent" />
         </button>
       </div>
-    </div>
+    </form>
     <Draggable
       class="h-full space-y-4"
       group="issues"

@@ -5,7 +5,7 @@
     PencilSquareIcon,
     UserPlusIcon,
   } from '@heroicons/vue/24/outline'
-  import { onClickOutside } from '@vueuse/core'
+  import { onClickOutside, useFocus } from '@vueuse/core'
   import type { Issue } from '@/types/Board'
   import { useIssueStore } from '@/store/issues'
   const props = defineProps<{
@@ -20,11 +20,13 @@
     issueStore.updateIssue(props.issue.id, ghost)
   }
   const inputRef = ref(null)
+  const { focused } = useFocus(inputRef)
   onClickOutside(inputRef, () => toggleIssueEditing())
-  const toggleIssueEditing = () => {
+  const toggleIssueEditing = async () => {
     const ghost = { ...props.issue }
     ghost.is_editing = !ghost.is_editing
-    issueStore.updateIssue(props.issue.id, ghost)
+    await issueStore.updateIssue(props.issue.id, ghost)
+    focused.value = true
   }
 </script>
 <template>
@@ -51,19 +53,22 @@
           v-if="props.issue.is_editing"
           ref="inputRef"
           v-model="titleValue"
-          class="rounded-xl border-2 border-primary-accent border-opacity-0 bg-page-foreground p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
+          autofocus
+          class="w-full rounded-xl border-2 border-primary-accent border-opacity-0 bg-page-foreground p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
           type="text"
         />
 
         <div
           v-else
-          class="group relative flex items-center space-x-1"
+          class="group relative flex items-center space-x-1 [&>*]:inline"
           @click="toggleIssueEditing()"
         >
           <span class="font-semibold">{{ props.issue.title }}</span>
-          <PencilSquareIcon
-            class="inline h-5 w-5 opacity-0 transition-opacity duration-100 group-hover:opacity-100"
-          />
+          <div>
+            <PencilSquareIcon
+              class="h-5 w-5 opacity-0 transition-opacity duration-100 group-hover:opacity-100"
+            />
+          </div>
         </div>
       </div>
       <div class="leading-5">
