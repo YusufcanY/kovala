@@ -25,13 +25,7 @@ export default defineNuxtConfig({
   vite: {
     logLevel: 'info',
     optimizeDeps: {
-      include: [
-        '@headlessui/vue',
-        'vue',
-        'pinia',
-        '@heroicons/vue/solid',
-        '@heroicons/vue/outline',
-      ],
+      include: ['@headlessui/vue', 'vue', 'pinia'],
     },
   },
 })
