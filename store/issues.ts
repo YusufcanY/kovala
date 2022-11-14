@@ -34,8 +34,7 @@ export const useIssueStore = defineStore('issues', {
       {
         id: 3,
         title: 'Buying Token is Not Working',
-        description:
-          'When you swap -> disconnect -> connect -> swap again, it will not work',
+        description: 'test it bruh',
         priority: 30,
         board_id: 10,
         index_in_board: 1,
