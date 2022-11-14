@@ -30,7 +30,7 @@
   }
 </script>
 <template>
-  <div class="flex min-w-[16rem] flex-[0_0_auto] flex-col space-y-4">
+  <div class="flex min-w-[18rem] flex-1 flex-col space-y-4">
     <div
       class="flex items-center justify-between whitespace-nowrap rounded-xl bg-white p-4 dark:bg-dark-page-body"
     >
