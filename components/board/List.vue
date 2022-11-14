@@ -9,6 +9,7 @@
   import { onClickOutside } from '@vueuse/core'
   import type { Issue, List } from '@/types/Board'
   import { useBoardStore } from '@/store/boards'
+  import { useIssueStore } from '@/store/issues'
   import useItemActions from '@/composables/useItemActions'
   import type { ChangeEventCallback } from '@/types/IssueActions'
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
@@ -18,6 +19,7 @@
 
   const itemActions = useItemActions()
   const boardStore = useBoardStore()
+  const issueStore = useIssueStore()
   const props = defineProps<{
     list: List
   }>()
@@ -48,6 +50,9 @@
 
   const inputRef = ref(null)
   onClickOutside(inputRef, () => boardStore.toggleBoardEditing(props.list.id))
+  const addNewIssue = () => {
+    issueStore.createIssue('New Issue', props.list.id)
+  }
 </script>
 <template>
   <div class="flex min-w-[18rem] flex-1 flex-col space-y-4">
@@ -81,8 +86,10 @@
         >
           <EllipsisHorizontalIcon class="h-5 w-5" />
         </button>
-        <!-- @click="addNewIssue" -->
-        <button class="rounded-lg bg-primary-accent bg-opacity-10 p-1">
+        <button
+          class="rounded-lg bg-primary-accent bg-opacity-10 p-1"
+          @click="addNewIssue"
+        >
           <PlusIcon class="h-5 w-5 text-primary-accent" />
         </button>
       </div>
@@ -90,7 +97,7 @@
     <Draggable
       class="h-full space-y-4"
       group="issues"
-      item-key="index"
+      item-key="id"
       :list="sortedList"
       @change="updateIssue"
     >

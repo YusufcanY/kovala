@@ -71,6 +71,11 @@ export const useIssueStore = defineStore('issues', {
   }),
   actions: {
     createIssue(title: string, boardId: number, assignees?: number[]) {
+      this.issues.forEach((issue) => {
+        if (issue.board_id === boardId) {
+          issue.index_in_board += 1
+        }
+      })
       this.issues.push({
         id: this.issues[this.issues.length - 1].id + 1,
         title,
