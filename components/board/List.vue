@@ -6,6 +6,7 @@
     XMarkIcon,
   } from '@heroicons/vue/24/outline'
   import Draggable from 'vuedraggable'
+  import { onClickOutside } from '@vueuse/core'
   import type { Issue, List } from '@/types/Board'
   import { useBoardStore } from '@/store/boards'
   import useItemActions from '@/composables/useItemActions'
@@ -44,6 +45,9 @@
       is_editing: false,
     })
   }
+
+  const inputRef = ref(null)
+  onClickOutside(inputRef, () => boardStore.toggleBoardEditing(props.list.id))
 </script>
 <template>
   <div class="flex min-w-[18rem] flex-1 flex-col space-y-4">
@@ -52,6 +56,7 @@
     >
       <input
         v-if="props.list.is_editing"
+        ref="inputRef"
         v-model="nameValue"
         class="w-full px-1 text-xl font-bold transition-all duration-200 dark:bg-dark-foreground"
         type="text"
@@ -60,7 +65,6 @@
       <div v-if="props.list.is_editing" class="flex items-center space-x-2">
         <button
           class="rounded-lg p-1 transition-colors duration-200 hover:bg-red-100 dark:hover:bg-red-900 dark:hover:bg-opacity-40"
-          @click="boardStore.toggleBoardEditing(props.list.id)"
         >
           <XMarkIcon class="h-5 w-5 text-red-600" />
         </button>
