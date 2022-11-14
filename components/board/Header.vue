@@ -6,6 +6,12 @@
     MagnifyingGlassIcon,
     PlusIcon,
   } from '@heroicons/vue/24/outline'
+  import { useBoardStore } from '@/store/boards'
+
+  const boardStore = useBoardStore()
+  const newBoard = () => {
+    boardStore.addBoard()
+  }
 </script>
 <template>
   <div class="grid grid-cols-16 gap-x-4">
@@ -26,6 +32,7 @@
     >
       <button
         class="flex h-10 items-center space-x-2 rounded-lg bg-primary-accent px-2 font-bold text-white"
+        @click="newBoard"
       >
         <div class="rounded-lg bg-white bg-opacity-20 p-1">
           <PlusIcon class="h-5 w-5" />

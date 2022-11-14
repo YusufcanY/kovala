@@ -1,6 +1,6 @@
 // import type { Person } from '@/types/Person'
 interface Issue {
-  id: number
+  readonly id: number
   title: string
   description?: string
   //   status: 10 | 20 | 30 | 40 | 50 // 10: To Do, 20: In Progress, 30: Resolved, 40: Closed, 50: Reopened
@@ -19,7 +19,7 @@ interface Issue {
   is_editing?: boolean
 }
 interface List {
-  id: number
+  readonly id: number
   name: string
   issues?: Issue[]
   is_editing?: boolean

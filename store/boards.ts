@@ -35,7 +35,7 @@ export const useBoardStore = defineStore('boards', {
   actions: {
     addBoard() {
       this.boards.push({
-        id: this.boards[this.boards.length - 1].id + 10,
+        id: this.boards[0] ? this.boards[this.boards.length - 1].id + 10 : 0,
         name: 'New Board',
         color: '#FF0000',
         is_editing: true,
@@ -43,6 +43,19 @@ export const useBoardStore = defineStore('boards', {
     },
     removeBoard(id: number) {
       this.boards = this.boards.filter((board) => board.id !== id)
+    },
+    updateBoard(id: number, updates: List) {
+      const updatedBoards = this.boards.map((issue) =>
+        issue.id === id ? updates : issue
+      )
+      this.boards = updatedBoards
+    },
+    toggleBoardEditing(id: number) {
+      this.boards.forEach((board) => {
+        if (board.id === id) {
+          board.is_editing = !board.is_editing
+        }
+      })
     },
   },
   getters: {
