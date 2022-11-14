@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     './modules/auto-import-eslint',
     '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
   ],
   css: ['@/assets/css/main.css'],
   build: {
