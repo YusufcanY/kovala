@@ -13,7 +13,7 @@
       <div class="group relative inline-block">
         <input
           class="rounded-xl py-2 pl-10 pr-2 ring-primary-accent transition-all duration-200 focus:ring dark:bg-dark-page-body"
-          placeholder="Search for anything"
+          :placeholder="$t('search_for_anything')"
           type="text"
         />
         <MagnifyingGlassIcon
@@ -30,7 +30,7 @@
         <div class="rounded-lg bg-white bg-opacity-20 p-1">
           <PlusIcon class="h-5 w-5" />
         </div>
-        <span>New Board</span>
+        <span>{{ $t('new_board') }}</span>
       </button>
       <button
         class="relative rounded-lg bg-white p-1 ring-primary-accent transition-all duration-200 hover:ring dark:bg-dark-page-body"
