@@ -2,6 +2,7 @@
   import {
     CheckIcon,
     EllipsisHorizontalIcon,
+    PencilSquareIcon,
     PlusIcon,
     XMarkIcon,
   } from '@heroicons/vue/24/outline'
@@ -63,10 +64,19 @@
         v-if="props.list.is_editing"
         ref="inputRef"
         v-model="nameValue"
-        class="w-full px-1 text-xl font-bold transition-all duration-200 dark:bg-dark-foreground"
+        class="w-full rounded-md px-1 text-xl font-bold transition-all duration-200 dark:bg-dark-foreground"
         type="text"
       />
-      <span v-else class="text-xl font-bold">{{ props.list.name }}</span>
+      <button
+        v-else
+        class="group relative flex items-center space-x-1"
+        @click="boardStore.toggleBoardEditing(props.list.id)"
+      >
+        <span class="text-xl font-bold">{{ props.list.name }}</span>
+        <PencilSquareIcon
+          class="inline h-5 w-5 opacity-0 transition-opacity duration-100 group-hover:opacity-100"
+        />
+      </button>
       <div v-if="props.list.is_editing" class="flex items-center space-x-2">
         <button
           class="rounded-lg p-1 transition-colors duration-200 hover:bg-red-100 dark:hover:bg-red-900 dark:hover:bg-opacity-40"
