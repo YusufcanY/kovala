@@ -117,6 +117,10 @@
         </button>
       </div>
     </form>
+    <div
+      class="h-1.5 w-full rounded-full dark:opacity-80"
+      :style="{ backgroundColor: props.list.color }"
+    ></div>
     <Draggable
       class="h-full space-y-4"
       group="issues"

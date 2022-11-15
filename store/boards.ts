@@ -8,27 +8,27 @@ export const useBoardStore = defineStore('boards', {
       {
         id: 10,
         name: 'To Do',
-        color: '#FF0000',
+        color: '#eba834',
       },
       {
         id: 20,
         name: 'In Progress',
-        color: '#FF0000',
+        color: '#77eb34',
       },
       {
         id: 30,
         name: 'Testing',
-        color: '#FF0000',
+        color: '#3440eb',
       },
       {
         id: 40,
         name: 'Resolved',
-        color: '#FF0000',
+        color: '#d634eb',
       },
       {
         id: 50,
         name: 'Closed',
-        color: '#FF0000',
+        color: '#e82c5e',
       },
     ] as List[],
   }),
@@ -37,7 +37,7 @@ export const useBoardStore = defineStore('boards', {
       this.boards.push({
         id: this.boards[0] ? this.boards[this.boards.length - 1].id + 10 : 0,
         name: 'New Board',
-        color: '#FF0000',
+        color: '#FFF',
         is_editing: true,
       })
     },
