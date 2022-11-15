@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { useBoardStore } from '@/store/boards'
-
+  import type { Person } from '@/types/Person'
   const board = useBoardStore()
-  /*   const people = useState<Person[]>('people', () => [
+  const people = useState<Person[]>('people', () => [
     {
       id: 1,
       name: 'Ymir Vision',
@@ -28,7 +28,7 @@
       name: 'Smith Backbone',
       image: '/memojis/memoji-2.jpg',
     },
-  ]) */
+  ])
   const boards = computed(() => {
     return board.getBoardsWithIssues
   })

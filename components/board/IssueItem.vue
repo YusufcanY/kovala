@@ -5,13 +5,16 @@
     PencilSquareIcon,
     UserPlusIcon,
   } from '@heroicons/vue/24/outline'
+  import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
   import { onClickOutside, useFocus } from '@vueuse/core'
+  import type { Person } from '@/types/Person'
   import type { Issue } from '@/types/Board'
   import { useIssueStore } from '@/store/issues'
   import useHelpers from '@/composables/useHelpers'
   const props = defineProps<{
     issue: Issue
   }>()
+  const people = useState<Person[]>('people')
   const { prettifyDate } = useHelpers()
   const issueStore = useIssueStore()
   const titleValue = ref(props.issue.title)
@@ -49,8 +52,20 @@
       } else {
         return 'border-[#e6e6f0] bg-[#f9f9fb] text-[#1b1e49] dark:border-opacity-0 dark:bg-dark-foreground dark:text-[#f0f0f0]'
       }
+      // 'border-green-500 bg-green-50 text-green-500 dark:bg-green-900'
     }
   })
+  const addAssignee = (id: number) => {
+    issueStore.addAssignee(props.issue.id, id)
+  }
+  const getAssigneesFromPeople = computed(() => {
+    return people.value.filter((person) =>
+      props.issue.assignee.includes(person.id)
+    )
+  })
+  const isThatPersonAssigned = (id: number) => {
+    return props.issue.assignee.includes(id)
+  }
 </script>
 <template>
   <button
@@ -101,15 +116,6 @@
       </div>
     </div>
     <div v-if="props.issue.due_date">
-      <!-- :class="
-          props.issue.due_date === 'Due Today'
-            ? 
-            : props.issue.due_date === 'Overdue'
-            ? 
-            : props.issue.due_date === 'Complete'
-            ? 'border-green-500 bg-green-50 text-green-500 dark:bg-green-900'
-            : 
-        " -->
       <span
         class="rounded-md border px-2 py-1 text-xs font-medium"
         :class="checkStatusOfDueDate"
@@ -118,21 +124,68 @@
     </div>
     <div class="flex justify-between">
       <div class="flex space-x-0.5">
-        <div
+        <TransitionGroup
           v-if="props.issue.assignee && props.issue.assignee[0]"
           class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
+          name="slide-from-left"
+          tag="div"
         >
           <img
-            v-for="(assignee, index) in props.issue.assignee"
+            v-for="(assignee, index) in getAssigneesFromPeople"
             :key="index"
             alt=""
             class="h-7 w-7 rounded-full border-2 border-white dark:border-dark-page-body"
-            :src="String(assignee)"
+            :src="assignee.image"
           />
-        </div>
-        <UserPlusIcon
-          class="h-8 w-8 rounded-full border-[3px] border-white bg-primary-accent bg-opacity-10 p-1 text-primary-accent dark:border-dark-page-body"
-        />
+        </TransitionGroup>
+
+        <Menu as="div" class="relative">
+          <MenuButton v-slot="{ open }" as="a">
+            <UserPlusIcon
+              class="h-8 w-8 border-white p-1 text-primary-accent transition-all duration-100 dark:border-dark-page-body"
+              :class="
+                open
+                  ? 'rounded-md rounded-r-none bg-gray-100 bg-opacity-100 dark:bg-dark-foreground'
+                  : 'rounded-full border-[3px]  bg-primary-accent bg-opacity-10'
+              "
+            />
+          </MenuButton>
+          <transition
+            enter-active-class="transition duration-100"
+            enter-from-class="translate-y-2 opacity-0"
+            enter-to-class="translate-y-0 opacity-100"
+            leave-active-class="transition duration-100"
+            leave-from-class="translate-y-0 opacity-100"
+            leave-to-class="translate-y-2 opacity-0"
+          >
+            <MenuItems
+              class="absolute left-full top-0 z-40 w-64 origin-top-left rounded-md rounded-tl-none bg-white shadow-lg dark:bg-dark-foreground"
+            >
+              <div class="space-y-1 p-1">
+                <MenuItem
+                  v-for="item in people"
+                  :key="item.id"
+                  v-slot="{ active }"
+                >
+                  <div
+                    :class="[
+                      isThatPersonAssigned(item.id)
+                        ? 'bg-green-100 dark:bg-green-900'
+                        : active
+                        ? 'bg-white dark:bg-dark-page-body'
+                        : '',
+                      'flex w-full items-center space-x-2 rounded-md px-2 py-2 text-sm transition-all duration-200',
+                    ]"
+                    @click="addAssignee(item.id)"
+                  >
+                    <img alt="" class="w-6 rounded-full" :src="item.image" />
+                    <span> {{ item.name }} </span>
+                  </div>
+                </MenuItem>
+              </div>
+            </MenuItems>
+          </transition>
+        </Menu>
       </div>
       <div class="flex items-center space-x-2">
         <div v-if="props.issue.attachments" class="flex items-center space-x-1">
@@ -157,3 +210,14 @@
     </div>
   </button>
 </template>
+<style scoped>
+  .slide-from-left-enter-active,
+  .slide-from-left-leave-active {
+    transition: all 0.3s;
+  }
+  .slide-from-left-enter-from,
+  .slide-from-left-leave-to {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+</style>

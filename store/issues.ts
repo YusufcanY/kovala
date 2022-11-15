@@ -27,6 +27,7 @@ export const useIssueStore = defineStore('issues', {
         priority: 10,
         board_id: 10,
         index_in_board: 2,
+        assignee: [],
         created_at: 1668497409000,
         updated_at: 1668497409000,
       },
@@ -79,7 +80,7 @@ export const useIssueStore = defineStore('issues', {
         id: this.issues[this.issues.length - 1].id + 1,
         title,
         is_editing: true,
-        ...(assignees ? { assignee: assignees } : {}),
+        ...(assignees ? { assignee: assignees } : { assignee: [] }),
         board_id: boardId || 0,
         index_in_board: 0,
         created_at: Date.now(),
@@ -95,6 +96,22 @@ export const useIssueStore = defineStore('issues', {
     },
     deleteIssue(id: number) {
       this.issues = this.issues.filter((issue) => issue.id !== id)
+    },
+    addAssignee(id: number, assigneeId: number) {
+      const updatedIssues = this.issues.map((issue) => {
+        if (issue.id === id) {
+          if (issue.assignee.includes(assigneeId)) {
+            issue.assignee = issue.assignee.filter(
+              (assignee) => assignee !== assigneeId
+            )
+          } else {
+            return { ...issue, assignee: [...issue.assignee, assigneeId] }
+          }
+        }
+        return issue
+      })
+      this.issues = updatedIssues
+      console.log('this.issues :>> ', this.issues)
     },
   },
   getters: {

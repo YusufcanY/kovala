@@ -11,29 +11,38 @@
       <LanguageIcon class="h-6 w-6" />
       <span class="font-semibold uppercase">{{ $i18n.locale }}</span>
     </MenuButton>
-    <MenuItems
-      class="absolute left-0 bottom-0 mb-12 w-full origin-bottom-left rounded-md bg-white shadow-lg dark:bg-dark-foreground"
+    <transition
+      enter-active-class="transition duration-100"
+      enter-from-class="translate-y-2 opacity-0"
+      enter-to-class="translate-y-0 opacity-100"
+      leave-active-class="transition duration-100"
+      leave-from-class="translate-y-0 opacity-100"
+      leave-to-class="translate-y-2 opacity-0"
     >
-      <div class="px-1 py-1">
-        <MenuItem
-          v-for="(item, index) in $i18n.availableLocales"
-          :key="index"
-          v-slot="{ active }"
-        >
-          <button
-            :class="[
-              { 'bg-gray-100 dark:bg-dark-page-body': active },
-              'flex w-full items-center space-x-1 rounded-md px-2 py-2 text-sm transition-all duration-200',
-            ]"
-            @click="$i18n.locale = item"
+      <MenuItems
+        class="absolute left-0 bottom-0 mb-12 w-full origin-bottom-left rounded-md bg-white shadow-lg dark:bg-dark-foreground"
+      >
+        <div class="px-1 py-1">
+          <MenuItem
+            v-for="(item, index) in $i18n.availableLocales"
+            :key="index"
+            v-slot="{ active }"
           >
-            <img alt="" class="w-6" :src="`/flags/${item}-flag.png`" />
-            <span>
-              {{ $t(item) }}
-            </span>
-          </button>
-        </MenuItem>
-      </div>
-    </MenuItems>
+            <button
+              :class="[
+                { 'bg-gray-100 dark:bg-dark-page-body': active },
+                'flex w-full items-center space-x-1 rounded-md px-2 py-2 text-sm transition-all duration-200',
+              ]"
+              @click="$i18n.locale = item"
+            >
+              <img alt="" class="w-6" :src="`/flags/${item}-flag.png`" />
+              <span>
+                {{ $t(item) }}
+              </span>
+            </button>
+          </MenuItem>
+        </div>
+      </MenuItems>
+    </transition>
   </Menu>
 </template>
