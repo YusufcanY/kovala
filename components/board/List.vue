@@ -175,7 +175,7 @@
     transform: translateX(-100%);
   }
   .gradient-lighter {
-    animation: slide infinite 2s linear;
+    animation: slide infinite 1s linear;
   }
   @keyframes slide {
     0% {
