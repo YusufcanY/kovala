@@ -69,9 +69,8 @@
 </script>
 <template>
   <div class="flex min-w-[18rem] flex-1 flex-col space-y-4">
-    <form
+    <div
       class="flex items-center justify-between space-x-2 whitespace-nowrap rounded-xl bg-white p-4 dark:bg-dark-page-body"
-      @submit.prevent="updateBoardName()"
     >
       <input
         v-if="props.list.is_editing"
@@ -79,6 +78,7 @@
         v-model="nameValue"
         class="w-full rounded-md bg-page-foreground px-1 text-xl font-bold transition-all duration-200 dark:bg-dark-foreground"
         type="text"
+        @keyup.enter="updateBoardName()"
       />
       <button
         v-else
@@ -98,7 +98,7 @@
         </button>
         <button
           class="rounded-lg bg-primary-accent bg-opacity-10 p-1"
-          type="submit"
+          @click="updateBoardName()"
         >
           <CheckIcon class="h-5 w-5 text-primary-accent" />
         </button>
@@ -116,7 +116,7 @@
           <PlusIcon class="h-5 w-5 text-primary-accent" />
         </button>
       </div>
-    </form>
+    </div>
     <div
       class="h-1.5 w-full rounded-full dark:opacity-80"
       :style="{ backgroundColor: props.list.color }"
