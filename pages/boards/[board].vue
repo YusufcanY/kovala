@@ -2,7 +2,7 @@
   import { useBoardStore } from '@/store/boards'
   import type { Person } from '@/types/Person'
   const board = useBoardStore()
-  const people = useState<Person[]>('people', () => [
+  useState<Person[]>('people', () => [
     {
       id: 1,
       name: 'Ymir Vision',
