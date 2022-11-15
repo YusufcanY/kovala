@@ -33,10 +33,18 @@
   })
   const updateIssue = (event: ChangeEventCallback) => {
     if (event.added) {
+      isMovedMarkActive.value = true
+      setTimeout(() => {
+        isMovedMarkActive.value = false
+      }, 2000)
       itemActions.added(event.added, props.list.id)
     } else if (event.removed) {
       itemActions.removed(event.removed, props.list.id)
     } else if (event.moved) {
+      isMovedMarkActive.value = true
+      setTimeout(() => {
+        isMovedMarkActive.value = false
+      }, 2000)
       itemActions.moved(event.moved, props.list.id)
     }
   }
@@ -70,12 +78,6 @@
   watchEffect(() => {
     if (props.list.is_editing) {
       focused.value = true
-    }
-    if (props.list.issues && props.list.issues.length > 0) {
-      isMovedMarkActive.value = true
-      setTimeout(() => {
-        isMovedMarkActive.value = false
-      }, 2000)
     }
   })
 </script>
