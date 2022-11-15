@@ -51,6 +51,7 @@
 
   const inputRef = ref(null)
   const isAddedMarkActive = ref(false)
+  const isMovedMarkActive = ref(false)
   const { focused } = useFocus(inputRef)
 
   onClickOutside(inputRef, () => toggleIssueEditing())
@@ -69,6 +70,12 @@
   watchEffect(() => {
     if (props.list.is_editing) {
       focused.value = true
+    }
+    if (props.list.issues && props.list.issues.length > 0) {
+      isMovedMarkActive.value = true
+      setTimeout(() => {
+        isMovedMarkActive.value = false
+      }, 2000)
     }
   })
 </script>
@@ -131,9 +138,14 @@
       </div>
     </div>
     <div
-      class="h-1.5 w-full rounded-full dark:opacity-80"
+      class="relative h-1.5 w-full overflow-hidden rounded-full dark:opacity-80"
       :style="{ backgroundColor: props.list.color }"
-    ></div>
+    >
+      <div
+        v-show="props.list.is_editing || isMovedMarkActive"
+        class="gradient-lighter absolute top-0 -left-1/2 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent"
+      ></div>
+    </div>
     <Draggable
       class="h-full space-y-4"
       group="issues"
@@ -150,7 +162,7 @@
 <style scoped>
   .switch-and-scale-enter-active,
   .switch-and-scale-leave-active {
-    transition: all 0.2s;
+    transition: all 0.1s;
   }
   .switch-and-scale-enter-from {
     opacity: 0;
@@ -159,5 +171,16 @@
   .switch-and-scale-leave-to {
     opacity: 0;
     transform: translateX(-100%);
+  }
+  .gradient-lighter {
+    animation: slide infinite 2s linear;
+  }
+  @keyframes slide {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
   }
 </style>
