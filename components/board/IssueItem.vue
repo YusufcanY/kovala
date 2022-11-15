@@ -26,8 +26,12 @@
     const ghost = { ...props.issue }
     ghost.is_editing = !ghost.is_editing
     await issueStore.updateIssue(props.issue.id, ghost)
-    focused.value = true
   }
+  watchEffect(() => {
+    if (props.issue.is_editing) {
+      focused.value = true
+    }
+  })
 </script>
 <template>
   <button
@@ -53,9 +57,9 @@
           v-if="props.issue.is_editing"
           ref="inputRef"
           v-model="titleValue"
-          autofocus
           class="w-full rounded-xl border-2 border-primary-accent border-opacity-0 bg-page-foreground p-2 transition-all duration-200 focus:border-opacity-100 dark:bg-dark-foreground"
           type="text"
+          @keyup.enter="updateIssue"
         />
 
         <div
