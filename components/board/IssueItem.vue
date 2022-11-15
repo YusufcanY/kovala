@@ -124,21 +124,22 @@
     </div>
     <div class="flex justify-between">
       <div class="flex space-x-0.5">
-        <TransitionGroup
-          v-if="props.issue.assignee && props.issue.assignee[0]"
-          class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
-          name="slide-from-left"
-          tag="div"
-        >
-          <img
-            v-for="(assignee, index) in getAssigneesFromPeople"
-            :key="index"
-            alt=""
-            class="h-7 w-7 rounded-full border-2 border-white dark:border-dark-page-body"
-            :src="assignee.image"
-          />
-        </TransitionGroup>
-
+        <Transition name="slide-from-left">
+          <TransitionGroup
+            v-if="props.issue.assignee && props.issue.assignee[0]"
+            class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
+            name="slide-from-left"
+            tag="div"
+          >
+            <img
+              v-for="(assignee, index) in getAssigneesFromPeople"
+              :key="index"
+              alt=""
+              class="h-7 w-7 rounded-full border-2 border-white dark:border-dark-page-body"
+              :src="assignee.image"
+            />
+          </TransitionGroup>
+        </Transition>
         <Menu as="div" class="relative">
           <MenuButton v-slot="{ open }" as="a">
             <UserPlusIcon
