@@ -8,9 +8,9 @@ interface Issue {
   assignee?: number[]
   board_id: number
   index_in_board: number
-  due_date: string
-  created_at: string
-  updated_at: string
+  due_date?: number
+  created_at: number
+  updated_at: number
   task?: {
     total: number
     completed: number

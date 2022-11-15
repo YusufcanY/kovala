@@ -8,9 +8,11 @@
   import { onClickOutside, useFocus } from '@vueuse/core'
   import type { Issue } from '@/types/Board'
   import { useIssueStore } from '@/store/issues'
+  import useHelpers from '@/composables/useHelpers'
   const props = defineProps<{
     issue: Issue
   }>()
+  const { prettifyDate } = useHelpers()
   const issueStore = useIssueStore()
   const titleValue = ref(props.issue.title)
   const updateIssue = () => {
@@ -30,6 +32,23 @@
   watchEffect(() => {
     if (props.issue.is_editing) {
       focused.value = true
+    }
+  })
+  const checkStatusOfDueDate = computed(() => {
+    if (props.issue.due_date) {
+      const dueDate = new Date(props.issue.due_date)
+      const today = new Date()
+      if (dueDate < today) {
+        return 'border-red-500 bg-red-50 text-red-500 dark:bg-red-900'
+      } else if (
+        dueDate.getDate() === today.getDate() &&
+        dueDate.getMonth() === today.getMonth() &&
+        dueDate.getFullYear() === today.getFullYear()
+      ) {
+        return 'border-yellow-500 bg-yellow-50 text-yellow-500 dark:bg-yellow-900'
+      } else {
+        return 'border-[#e6e6f0] bg-[#f9f9fb] text-[#1b1e49] dark:border-opacity-0 dark:bg-dark-foreground dark:text-[#f0f0f0]'
+      }
     }
   })
 </script>
@@ -81,19 +100,20 @@
         }}</span>
       </div>
     </div>
-    <div>
-      <span
-        class="rounded-md border px-2 py-1 text-xs font-medium"
-        :class="
+    <div v-if="props.issue.due_date">
+      <!-- :class="
           props.issue.due_date === 'Due Today'
-            ? 'border-yellow-500 bg-yellow-50 text-yellow-500 dark:bg-yellow-900'
+            ? 
             : props.issue.due_date === 'Overdue'
-            ? 'border-red-500 bg-red-50 text-red-500 dark:bg-red-900'
+            ? 
             : props.issue.due_date === 'Complete'
             ? 'border-green-500 bg-green-50 text-green-500 dark:bg-green-900'
-            : 'border-[#e6e6f0] bg-[#f9f9fb] text-[#1b1e49] dark:border-opacity-0 dark:bg-dark-foreground dark:text-[#f0f0f0]'
-        "
-        >{{ props.issue.due_date }}</span
+            : 
+        " -->
+      <span
+        class="rounded-md border px-2 py-1 text-xs font-medium"
+        :class="checkStatusOfDueDate"
+        >{{ prettifyDate(props.issue.due_date) }}</span
       >
     </div>
     <div class="flex justify-between">

@@ -17,9 +17,9 @@ export const useIssueStore = defineStore('issues', {
           completed: 1,
         },
         attachments: 2,
-        due_date: 'Sep 20, 2022',
-        created_at: '2021-07-01',
-        updated_at: '2021-07-01',
+        due_date: 1668451017000,
+        created_at: 1668497409000,
+        updated_at: 1668497409000,
       },
       {
         id: 2,
@@ -27,9 +27,8 @@ export const useIssueStore = defineStore('issues', {
         priority: 10,
         board_id: 10,
         index_in_board: 2,
-        due_date: 'Dec 31, 2022',
-        created_at: '2021-07-01',
-        updated_at: '2021-07-01',
+        created_at: 1668497409000,
+        updated_at: 1668497409000,
       },
       {
         id: 3,
@@ -40,9 +39,9 @@ export const useIssueStore = defineStore('issues', {
         index_in_board: 1,
         assignee: [],
         attachments: 1,
-        due_date: 'Due Today',
-        created_at: '2021-07-01',
-        updated_at: '2021-07-01',
+        due_date: 1668671017000,
+        created_at: 1668497409000,
+        updated_at: 1668497409000,
       },
       {
         id: 4,
@@ -50,9 +49,9 @@ export const useIssueStore = defineStore('issues', {
         priority: 30,
         assignee: [],
         attachments: 2,
-        due_date: 'Overdue',
-        created_at: '2021-07-01',
-        updated_at: '2021-07-01',
+        due_date: 1668671017000,
+        created_at: 1668497409000,
+        updated_at: 1668497409000,
       },
       {
         id: 5,
@@ -63,9 +62,9 @@ export const useIssueStore = defineStore('issues', {
           total: 5,
           completed: 4,
         },
-        due_date: 'Complete',
-        created_at: '2021-07-01',
-        updated_at: '2021-07-01',
+        due_date: 1668671017000,
+        created_at: 1668497409000,
+        updated_at: 1668497409000,
       },
     ] as Issue[],
   }),
@@ -83,12 +82,12 @@ export const useIssueStore = defineStore('issues', {
         ...(assignees ? { assignee: assignees } : {}),
         board_id: boardId || 0,
         index_in_board: 0,
-        due_date: 'Sep 20, 2022',
-        created_at: '2021-07-01',
-        updated_at: '2021-07-01',
+        created_at: Date.now(),
+        updated_at: Date.now(),
       })
     },
     updateIssue(id: number, updates: Issue) {
+      updates.updated_at = Date.now()
       const updatedIssues = this.issues.map((issue) =>
         issue.id === id ? updates : issue
       )
