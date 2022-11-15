@@ -50,11 +50,16 @@
   }
 
   const inputRef = ref(null)
+  const isAddedMarkActive = ref(false)
   const { focused } = useFocus(inputRef)
 
   onClickOutside(inputRef, () => toggleIssueEditing())
   const addNewIssue = () => {
+    isAddedMarkActive.value = true
     issueStore.createIssue('New Issue', props.list.id)
+    setTimeout(() => {
+      isAddedMarkActive.value = false
+    }, 2000)
   }
   const toggleIssueEditing = async () => {
     const ghost = { ...props.list }
@@ -110,10 +115,18 @@
           <EllipsisHorizontalIcon class="h-5 w-5" />
         </button>
         <button
-          class="rounded-lg bg-primary-accent bg-opacity-10 p-1"
+          class="overflow-hidden rounded-lg bg-primary-accent p-1 transition-all duration-200"
+          :class="
+            isAddedMarkActive
+              ? 'text-white'
+              : 'bg-opacity-10 text-primary-accent'
+          "
           @click="addNewIssue"
         >
-          <PlusIcon class="h-5 w-5 text-primary-accent" />
+          <Transition mode="out-in" name="switch-and-scale">
+            <CheckIcon v-if="isAddedMarkActive" class="h-5 w-5" />
+            <PlusIcon v-else class="h-5 w-5" />
+          </Transition>
         </button>
       </div>
     </div>
@@ -134,3 +147,17 @@
     </Draggable>
   </div>
 </template>
+<style scoped>
+  .switch-and-scale-enter-active,
+  .switch-and-scale-leave-active {
+    transition: all 0.2s;
+  }
+  .switch-and-scale-enter-from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .switch-and-scale-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+</style>
