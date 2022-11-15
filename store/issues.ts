@@ -111,7 +111,6 @@ export const useIssueStore = defineStore('issues', {
         return issue
       })
       this.issues = updatedIssues
-      console.log('this.issues :>> ', this.issues)
     },
   },
   getters: {
