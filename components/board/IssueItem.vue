@@ -58,10 +58,10 @@
   const addAssignee = (id: number) => {
     issueStore.addAssignee(props.issue.id, id)
   }
-  const getAssigneesFromPeople = computed(() => {
-    return people.value.filter((person) =>
-      props.issue.assignee.includes(person.id)
-    )
+  const getAssigneedPeopleFromId = computed(() => {
+    return props.issue.assignee.map((id) => {
+      return people.value.find((person) => person.id === id)
+    })
   })
   const isThatPersonAssigned = (id: number) => {
     return props.issue.assignee.includes(id)
@@ -132,11 +132,11 @@
             tag="div"
           >
             <img
-              v-for="(assignee, index) in getAssigneesFromPeople"
+              v-for="(assignee, index) in getAssigneedPeopleFromId"
               :key="index"
               alt=""
               class="h-7 w-7 rounded-full border-2 border-white dark:border-dark-page-body"
-              :src="assignee.image"
+              :src="assignee?.image"
             />
           </TransitionGroup>
         </Transition>
