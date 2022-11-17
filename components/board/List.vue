@@ -140,12 +140,16 @@
       </div>
     </div>
     <div
-      class="relative h-1.5 w-full overflow-hidden rounded-full dark:opacity-80"
+      class="group relative h-1.5 w-full overflow-hidden rounded-full dark:opacity-80"
       :style="{ backgroundColor: props.list.color }"
     >
       <div
-        v-show="props.list.is_editing || isMovedMarkActive"
-        class="gradient-lighter absolute top-0 -left-1/2 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent"
+        class="gradient-lighter absolute top-0 -left-1/2 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-opacity duration-200"
+        :class="
+          props.list.is_editing || isMovedMarkActive
+            ? 'opacity-100'
+            : 'opacity-0 group-hover:opacity-100'
+        "
       ></div>
     </div>
     <Draggable
