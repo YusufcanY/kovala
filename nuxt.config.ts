@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     './modules/auto-import-eslint',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
+    '@nuxt/image-edge',
   ],
   css: ['@/assets/css/main.css'],
   build: {

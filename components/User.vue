@@ -11,10 +11,11 @@
       class="flex items-center justify-between rounded-lg border border-primary-accent border-opacity-0 p-2 transition-all duration-200 hover:border-opacity-100"
     >
       <div class="flex items-center space-x-2">
-        <img
-          alt=""
-          class="h-10 w-10 rounded-full"
+        <NuxtImg
+          class="rounded-full"
+          height="40px"
           src="/memojis/memoji-6.jpg"
+          width="40px"
         />
         <span class="font-bold">Yusufcan Yılmaz</span>
       </div>

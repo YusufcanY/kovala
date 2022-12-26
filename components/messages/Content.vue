@@ -19,10 +19,10 @@
     >
       <div class="col-span-4 grid w-full grid-cols-16 space-x-2">
         <div class="col-span-3 flex items-center justify-center">
-          <img
-            alt=""
-            class="w-14 rounded-full"
+          <NuxtImg
+            class="rounded-full"
             :src="getMessagerById?.from_image"
+            width="56px"
           />
         </div>
         <div class="col-span-13 flex justify-center">

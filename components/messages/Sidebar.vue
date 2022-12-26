@@ -65,10 +65,11 @@
       >
         <div class="grid w-full grid-cols-16 items-center space-x-2">
           <div class="relative col-span-2">
-            <img
-              alt=""
-              class="h-8 w-8 rounded-full"
+            <NuxtImg
+              class="rounded-full"
+              height="32px"
               :src="element.from_image"
+              width="32px"
             />
             <div
               v-show="element.is_online"

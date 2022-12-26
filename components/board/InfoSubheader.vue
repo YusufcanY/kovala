@@ -7,7 +7,7 @@
       <span class="text-sm font-medium text-[#86889F]">BOARDS</span>
       <div class="flex items-center space-x-2">
         <div class="rounded-full bg-white dark:bg-dark-page-body">
-          <img class="h-9 w-9 p-1" src="/backend.png" />
+          <NuxtImg class="p-1" height="36px" src="/backend.png" width="36px" />
         </div>
         <span class="text-xl font-bold">Frontend</span>
       </div>
@@ -26,30 +26,35 @@
           <div
             class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
           >
-            <img
-              alt=""
-              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+            <NuxtImg
+              class="rounded-full border-2 border-white dark:border-dark-page-body"
+              height="36px"
               src="/memojis/memoji-1.jpg"
+              width="36px"
             />
-            <img
-              alt=""
-              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+            <NuxtImg
+              class="rounded-full border-2 border-white dark:border-dark-page-body"
+              height="36px"
               src="/memojis/memoji-3.jpg"
+              width="36px"
             />
-            <img
-              alt=""
-              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+            <NuxtImg
+              class="rounded-full border-2 border-white dark:border-dark-page-body"
+              height="36px"
               src="/memojis/memoji-2.jpg"
+              width="36px"
             />
-            <img
-              alt=""
-              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+            <NuxtImg
+              class="rounded-full border-2 border-white dark:border-dark-page-body"
+              height="36px"
               src="/memojis/memoji-4.jpg"
+              width="36px"
             />
-            <img
-              alt=""
-              class="h-9 w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+            <NuxtImg
+              class="rounded-full border-2 border-white dark:border-dark-page-body"
+              height="36px"
               src="/memojis/memoji-5.jpg"
+              width="36px"
             />
           </div>
           <span class="font-semibold text-[#86889F]"> +4 </span>

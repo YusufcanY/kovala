@@ -179,7 +179,11 @@
                     ]"
                     @click="addAssignee(item.id)"
                   >
-                    <img alt="" class="w-6 rounded-full" :src="item.image" />
+                    <NuxtImg
+                      class="rounded-full"
+                      :src="item.image"
+                      width="24px"
+                    />
                     <span> {{ item.name }} </span>
                   </div>
                 </MenuItem>

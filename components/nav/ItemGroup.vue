@@ -53,9 +53,11 @@
                 $route.path === child.route,
             }"
           >
-            <img
-              class="h-6 w-6 p-1 transition-all duration-200"
+            <NuxtImg
+              class="p-1 transition-all duration-200"
+              height="24px"
               :src="child.icon"
+              width="24px"
             />
           </div>
           <span>{{ child.name }}</span>
