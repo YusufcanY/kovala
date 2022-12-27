@@ -19,6 +19,11 @@
   const setLocale = (lang: string) => {
     storage.value = lang
     locale.value = lang
+    useHead({
+      htmlAttrs: {
+        lang,
+      },
+    })
   }
   const preferredLanguages = usePreferredLanguages()
   const getLocale = () => {
@@ -29,6 +34,11 @@
     }
   }
   locale.value = getLocale()
+  useHead({
+    htmlAttrs: {
+      lang: getLocale(),
+    },
+  })
 </script>
 <template>
   <Menu as="div" class="relative">
