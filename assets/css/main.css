@@ -2,42 +2,42 @@ input,
 button {
   outline: none;
 }
-html.dark body {
+body.dark {
   background-color: #191919;
   color: #f0f0f0;
 }
-html.light body {
+body.light {
   background-color: #ffffff;
   color: #002e3b;
 }
 /* light mode scrollbar */
-html.light * {
+body.light * {
   scrollbar-width: auto;
   scrollbar-color: #002e3b #ffffff;
 }
-html.light *::-webkit-scrollbar {
+body.light *::-webkit-scrollbar {
   width: 13px;
 }
-html.light *::-webkit-scrollbar-track {
+body.light *::-webkit-scrollbar-track {
   background: #ffffff;
 }
-html.light *::-webkit-scrollbar-thumb {
+body.light *::-webkit-scrollbar-thumb {
   background-color: #002e3b;
   border-radius: 16px;
   border: 3px solid #ffffff;
 }
 /* dark mode scrollbar */
-html.dark * {
+body.dark * {
   scrollbar-width: auto;
   scrollbar-color: #343434 #191919;
 }
-html.dark *::-webkit-scrollbar {
+body.dark *::-webkit-scrollbar {
   width: 13px;
 }
-html.dark *::-webkit-scrollbar-track {
+body.dark *::-webkit-scrollbar-track {
   background: #191919;
 }
-html.dark *::-webkit-scrollbar-thumb {
+body.dark *::-webkit-scrollbar-thumb {
   background-color: #343434;
   border-radius: 16px;
   border: 3px solid #191919;

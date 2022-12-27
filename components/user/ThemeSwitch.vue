@@ -4,16 +4,19 @@
   if (isDark.value === null || isDark.value === undefined) {
     isDark.value = false
   }
+  const getThemeClass = computed(() => {
+    return isDark.value ? 'dark' : 'light'
+  })
   useHead({
-    htmlAttrs: {
-      class: isDark.value ? 'dark' : 'light',
+    bodyAttrs: {
+      class: getThemeClass,
     },
   })
   const changeTheme = () => {
     isDark.value = !isDark.value
     useHead({
-      htmlAttrs: {
-        class: isDark.value ? 'dark' : 'light',
+      bodyAttrs: {
+        class: getThemeClass,
       },
     })
   }
