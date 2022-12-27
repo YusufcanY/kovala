@@ -7,7 +7,12 @@
       <span class="text-sm font-medium text-[#86889F]">BOARDS</span>
       <div class="flex items-center space-x-2">
         <div class="rounded-full bg-white dark:bg-dark-page-body">
-          <NuxtImg class="w-9 p-1" src="/backend_r2hjvn.png" width="100px" />
+          <NuxtImg
+            alt="Frontend"
+            class="w-9 p-1"
+            src="/frontend_lkmt3e.png"
+            width="100px"
+          />
         </div>
         <span class="text-xl font-bold">Frontend</span>
       </div>
@@ -28,26 +33,31 @@
           >
             <NuxtImg
               class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+              alt="User"
               src="/memoji-1_dbislj.jpg"
               width="100px"
             />
             <NuxtImg
               class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+              alt="User"
               src="/memoji-3_bnaogy.jpg"
               width="100px"
             />
             <NuxtImg
               class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+              alt="User"
               src="/memoji-2_hphha4.jpg"
               width="100px"
             />
             <NuxtImg
               class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+              alt="User"
               src="/memoji-4_joosgu.jpg"
               width="100px"
             />
             <NuxtImg
               class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
+              alt="User"
               src="/memoji-5_m4tz9e.jpg"
               width="100px"
             />

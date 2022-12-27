@@ -58,6 +58,7 @@
       <div class="flex space-x-1">
         <NuxtImg
           :src="getWorkspaceById(activeWorkspaceId)?.icon"
+          :alt="getWorkspaceById(activeWorkspaceId)?.name"
           width="100px"
           class="w-8"
         />
@@ -84,7 +85,12 @@
           class="relative flex items-center space-x-2 rounded-2xl border-2 border-[#F3F4F6] bg-white p-4 transition-all duration-200 hover:border-opacity-100 dark:border-opacity-10 dark:bg-dark-page-body"
           @click="setActiveWorkspace(item.id)"
         >
-          <NuxtImg :src="item.icon" width="100px" class="w-8" />
+          <NuxtImg
+            :alt="item.name"
+            :src="item.icon"
+            width="100px"
+            class="w-8"
+          />
           <div class="flex flex-col items-start">
             <span class="truncate">{{ item.name }}</span>
           </div>

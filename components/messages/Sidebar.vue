@@ -67,6 +67,7 @@
           <div class="relative col-span-2">
             <NuxtImg
               class="w-8 rounded-full"
+              :alt="element.from"
               :src="element.from_image"
               width="100px"
             />

@@ -55,6 +55,7 @@
           >
             <NuxtImg
               class="w-6 p-1 transition-all duration-200"
+              :alt="child.name"
               :src="child.icon"
               width="100px"
             />

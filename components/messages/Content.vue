@@ -21,6 +21,7 @@
         <div class="col-span-3 flex items-center justify-center">
           <NuxtImg
             class="rounded-full"
+            :alt="getMessagerById?.from"
             :src="getMessagerById?.from_image"
             width="56px"
           />

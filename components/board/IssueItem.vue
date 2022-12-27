@@ -180,6 +180,7 @@
                     @click="addAssignee(item.id)"
                   >
                     <NuxtImg
+                      :alt="item.name"
                       class="w-7 rounded-full"
                       :src="item.image"
                       width="100px"

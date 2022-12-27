@@ -12,6 +12,7 @@
     >
       <div class="flex items-center space-x-2">
         <NuxtImg
+          alt="Yusufcan Yılmaz"
           class="w-10 rounded-full"
           src="/memoji-6_ug8s8k.jpg"
           width="100px"
