@@ -1,7 +1,10 @@
 <script setup lang="ts">
   import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
   import { LanguageIcon } from '@heroicons/vue/24/outline'
+  import { useStorage, usePreferredLanguages } from '@vueuse/core'
+  import { useI18n } from 'vue-i18n'
 
+  const { availableLocales, locale } = useI18n()
   const findLangFlag = (lang: string) => {
     switch (lang) {
       case 'en':
@@ -12,6 +15,15 @@
         return 'flag_wddntp'
     }
   }
+  const languages = usePreferredLanguages()
+  const lang = computed(() => {
+    const lang = languages.value.find((l) => availableLocales.includes(l))
+    return lang ? lang : 'en'
+  })
+  const storage = useStorage('lang', lang.value)
+  watchEffect(() => {
+    locale.value = storage.value
+  })
 </script>
 <template>
   <Menu as="div" class="relative">
@@ -20,7 +32,7 @@
       class="flex w-full items-center space-x-2 rounded-lg p-2 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-secondary-accent"
     >
       <LanguageIcon class="h-6 w-6" />
-      <span class="font-semibold uppercase">{{ $i18n.locale }}</span>
+      <span class="font-semibold uppercase">{{ locale }}</span>
     </MenuButton>
     <transition
       enter-active-class="transition duration-100"
@@ -35,7 +47,7 @@
       >
         <div class="px-1 py-1">
           <MenuItem
-            v-for="(item, index) in $i18n.availableLocales"
+            v-for="(item, index) in availableLocales"
             :key="index"
             v-slot="{ active }"
           >
@@ -44,7 +56,7 @@
                 { 'bg-gray-100 dark:bg-dark-page-body': active },
                 'flex w-full items-center space-x-1 rounded-md px-2 py-2 text-sm transition-all duration-200',
               ]"
-              @click="$i18n.locale = item"
+              @click="locale = item"
             >
               <NuxtImg
                 :alt="item"
