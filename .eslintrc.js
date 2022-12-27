@@ -4,20 +4,10 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    'vue/setup-compiler-macros': true,
   },
 
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
-    'eslint:recommended',
-    'plugin:json/recommended',
-    'plugin:nuxt/recommended',
-    '@nuxtjs',
-    'prettier',
-    './.nuxt/.eslintrc.json',
-  ],
-  plugins: ['json', 'prettier', 'nuxt', '@typescript-eslint'],
+  extends: ['@nuxtjs/eslint-config-typescript', 'prettier'],
+  plugins: ['json', 'prettier'],
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',

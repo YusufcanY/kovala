@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
-
 export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
@@ -11,14 +9,6 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
   build: {
     transpile: ['@heroicons/vue'],
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    },
   },
   typescript: {
     shim: false,
@@ -28,6 +18,11 @@ export default defineNuxtConfig({
     logLevel: 'info',
     optimizeDeps: {
       include: ['@headlessui/vue', 'vue', 'pinia'],
+    },
+  },
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/dtenkljas/image/upload/v1672066966',
     },
   },
 })
