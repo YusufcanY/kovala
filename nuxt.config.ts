@@ -1,7 +1,6 @@
 export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
-    './modules/auto-import-eslint',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     '@nuxt/image-edge',
