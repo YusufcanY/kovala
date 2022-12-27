@@ -40,7 +40,7 @@
       <BoardInfoSubheader />
     </div>
     <div
-      class="grid grid-flow-col grid-cols-[repeat(5,1fr)] grid-rows-[unset] gap-x-6 overflow-scroll px-6 pb-6 hide-scrollbar"
+      class="grid h-full grid-flow-col grid-cols-[repeat(5,1fr)] grid-rows-[unset] gap-x-6 overflow-scroll px-6 pb-6 hide-scrollbar"
     >
       <BoardList v-for="(item, index) in boards" :key="index" :list="item" />
     </div>

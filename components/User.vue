@@ -8,7 +8,7 @@
       <UserThemeSwitch />
     </div>
     <button
-      class="flex items-center justify-between rounded-lg border border-primary-accent border-opacity-0 p-2 transition-all duration-200 hover:border-opacity-100"
+      class="flex items-center justify-between rounded-lg border border-primary-accent border-opacity-0 bg-primary-accent bg-opacity-0 p-2 transition-all duration-200 hover:border-opacity-100 hover:bg-opacity-10"
     >
       <div class="flex items-center space-x-2">
         <NuxtImg
