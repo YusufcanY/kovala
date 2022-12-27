@@ -174,7 +174,7 @@
                       isThatPersonAssigned(item.id)
                         ? 'bg-green-100 dark:bg-green-900'
                         : active
-                        ? 'bg-white dark:bg-dark-page-body'
+                        ? 'bg-page-foreground dark:bg-dark-page-body'
                         : '',
                       'flex w-full items-center space-x-2 rounded-md px-2 py-2 text-sm transition-all duration-200',
                     ]"
@@ -207,7 +207,7 @@
         </div>
         <div v-if="props.issue.is_editing">
           <button
-            class="rounded-md bg-primary-accent px-2 font-bold text-white"
+            class="rounded-md border-2 border-primary-accent bg-primary-accent bg-opacity-0 px-2 py-1 font-semibold text-primary-accent transition-all duration-200 hover:bg-opacity-10"
             @click="updateIssue"
           >
             {{ $t('save') }}
