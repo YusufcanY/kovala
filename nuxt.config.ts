@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'Kovala | Task Management App',
       meta: [
