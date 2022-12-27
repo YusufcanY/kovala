@@ -6,7 +6,7 @@
       id: 1,
       is_online: true,
       from: 'Ymir Vision',
-      from_image: '/memojis/memoji-1.jpg',
+      from_image: '/memoji-1_dbislj.jpg',
       message: "Did you finish your task?! If you didn't you are fired!!!",
       time: '1 hour ago',
       notifications: 301,
@@ -14,14 +14,14 @@
     {
       id: 2,
       from: 'John Doe',
-      from_image: '/memojis/memoji-3.jpg',
+      from_image: '/memoji-3_bnaogy.jpg',
       message: "Okay, I'll be back",
       time: '3 hour ago',
     },
     {
       id: 3,
       from: 'Alcoholic German',
-      from_image: '/memojis/memoji-5.jpg',
+      from_image: '/memoji-5_m4tz9e.jpg',
       message:
         "Hey, don't forget vodka bottles. We'll drink that bottles like hell",
       time: '1 week ago',
@@ -29,7 +29,7 @@
     {
       id: 4,
       from: 'Fart Beeday',
-      from_image: '/memojis/memoji-4.jpg',
+      from_image: '/memoji-4_joosgu.jpg',
       is_last_message_from_you: true,
       message: 'Where is my best product manager!!',
       time: '23 seconds ago',
@@ -38,7 +38,7 @@
       id: 5,
       is_online: true,
       from: 'Smith Backbone',
-      from_image: '/memojis/memoji-2.jpg',
+      from_image: '/memoji-2_hphha4.jpg',
       is_last_message_from_you: true,
       message: 'The backend not done already??!!',
       time: '8 minutes ago',
@@ -66,10 +66,9 @@
         <div class="grid w-full grid-cols-16 items-center space-x-2">
           <div class="relative col-span-2">
             <NuxtImg
-              class="rounded-full"
-              height="32px"
+              class="w-8 rounded-full"
               :src="element.from_image"
-              width="32px"
+              width="100px"
             />
             <div
               v-show="element.is_online"

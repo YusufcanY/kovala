@@ -180,9 +180,9 @@
                     @click="addAssignee(item.id)"
                   >
                     <NuxtImg
-                      class="rounded-full"
+                      class="w-7 rounded-full"
                       :src="item.image"
-                      width="24px"
+                      width="100px"
                     />
                     <span> {{ item.name }} </span>
                   </div>

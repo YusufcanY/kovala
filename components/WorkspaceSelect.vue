@@ -5,24 +5,24 @@
     {
       id: 1,
       name: 'Atari',
-      icon: '/workspace-1.png',
+      icon: '/workspace-1_h119dr.png',
       notification: true,
     },
     {
       id: 2,
       name: 'Dunkin Donuts',
-      icon: '/workspace-2.png',
+      icon: '/workspace-2_hocznq.png',
     },
     {
       id: 3,
       name: "McDonald's",
-      icon: '/workspace-3.png',
+      icon: '/workspace-3_vsiklr.png',
       notification: true,
     },
     {
       id: 4,
       name: 'Uber',
-      icon: '/workspace-4.png',
+      icon: '/workspace-4_yztzj0.png',
     },
   ])
   const activeWorkspaceId = useState('activeWorkspaceId', () => 1)
@@ -56,10 +56,10 @@
       @click="toggleWorkspaceDropdown()"
     >
       <div class="flex space-x-1">
-        <img
-          alt=""
-          class="h-8"
+        <NuxtImg
           :src="getWorkspaceById(activeWorkspaceId)?.icon"
+          width="100px"
+          class="w-8"
         />
         <div class="flex flex-col items-start">
           <label class="-mb-1 text-xs font-medium text-[#AEAFC1]">{{
@@ -84,7 +84,7 @@
           class="relative flex items-center space-x-2 rounded-2xl border-2 border-[#F3F4F6] bg-white p-4 transition-all duration-200 hover:border-opacity-100 dark:border-opacity-10 dark:bg-dark-page-body"
           @click="setActiveWorkspace(item.id)"
         >
-          <img alt="" class="h-8" :src="item.icon" />
+          <NuxtImg :src="item.icon" width="100px" class="w-8" />
           <div class="flex flex-col items-start">
             <span class="truncate">{{ item.name }}</span>
           </div>

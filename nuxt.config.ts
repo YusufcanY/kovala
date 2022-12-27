@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     },
   },
   image: {
+    provider: 'cloudinary',
     cloudinary: {
       baseURL: 'https://res.cloudinary.com/dtenkljas/image/upload/v1672066966',
     },

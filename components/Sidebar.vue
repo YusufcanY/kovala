@@ -21,12 +21,12 @@
       children: [
         {
           name: 'Frontend',
-          icon: '/frontend.png',
+          icon: '/frontend_lkmt3e.png',
           route: '/boards/frontend',
         },
         {
           name: 'Backend',
-          icon: '/backend.png',
+          icon: '/backend_r2hjvn.png',
           route: '/boards/backend',
         },
       ],

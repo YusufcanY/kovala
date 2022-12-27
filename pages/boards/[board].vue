@@ -6,27 +6,27 @@
     {
       id: 1,
       name: 'Ymir Vision',
-      image: '/memojis/memoji-1.jpg',
+      image: '/memoji-1_dbislj.jpg',
     },
     {
       id: 2,
       name: 'John Doe',
-      image: '/memojis/memoji-3.jpg',
+      image: '/memoji-3_bnaogy.jpg',
     },
     {
       id: 3,
       name: 'Alcoholic German',
-      image: '/memojis/memoji-5.jpg',
+      image: '/memoji-5_m4tz9e.jpg',
     },
     {
       id: 4,
       name: 'Fart Beeday',
-      image: '/memojis/memoji-4.jpg',
+      image: '/memoji-4_joosgu.jpg',
     },
     {
       id: 5,
       name: 'Smith Backbone',
-      image: '/memojis/memoji-2.jpg',
+      image: '/memoji-2_hphha4.jpg',
     },
   ])
   const boards = computed(() => {

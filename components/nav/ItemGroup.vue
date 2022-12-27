@@ -54,10 +54,9 @@
             }"
           >
             <NuxtImg
-              class="p-1 transition-all duration-200"
-              height="24px"
+              class="w-6 p-1 transition-all duration-200"
               :src="child.icon"
-              width="24px"
+              width="100px"
             />
           </div>
           <span>{{ child.name }}</span>
