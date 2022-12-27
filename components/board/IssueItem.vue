@@ -131,10 +131,11 @@
             name="slide-from-left"
             tag="div"
           >
-            <img
+            <NuxtImg
               v-for="(assignee, index) in getAssigneedPeopleFromId"
               :key="index"
-              alt=""
+              :alt="assignee?.name"
+              width="100px"
               class="h-7 w-7 rounded-full border-2 border-white dark:border-dark-page-body"
               :src="assignee?.image"
             />
