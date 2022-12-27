@@ -12,18 +12,23 @@
       case 'tr':
         return 'tr-flag_alqvoz'
       default:
-        return 'flag_wddntp'
+        return 'en-flag_wddntp'
     }
   }
-  const languages = usePreferredLanguages()
-  const lang = computed(() => {
-    const lang = languages.value.find((l) => availableLocales.includes(l))
-    return lang ? lang : 'en'
-  })
-  const storage = useStorage('lang', lang.value)
-  watchEffect(() => {
-    locale.value = storage.value
-  })
+  const storage = useStorage('locale', 'en')
+  const setLocale = (lang: string) => {
+    storage.value = lang
+    locale.value = lang
+  }
+  const preferredLanguages = usePreferredLanguages()
+  const getLocale = () => {
+    if (storage.value) {
+      return storage.value
+    } else {
+      return preferredLanguages.value[0]
+    }
+  }
+  locale.value = getLocale()
 </script>
 <template>
   <Menu as="div" class="relative">
@@ -56,7 +61,7 @@
                 { 'bg-gray-100 dark:bg-dark-page-body': active },
                 'flex w-full items-center space-x-1 rounded-md px-2 py-2 text-sm transition-all duration-200',
               ]"
-              @click="locale = item"
+              @click="setLocale(item)"
             >
               <NuxtImg
                 :alt="item"
