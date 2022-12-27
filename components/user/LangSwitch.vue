@@ -1,6 +1,17 @@
 <script setup lang="ts">
   import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
   import { LanguageIcon } from '@heroicons/vue/24/outline'
+
+  const findLangFlag = (lang: string) => {
+    switch (lang) {
+      case 'en':
+        return 'en-flag_wddntp'
+      case 'tr':
+        return 'tr-flag_alqvoz'
+      default:
+        return 'flag_wddntp'
+    }
+  }
 </script>
 <template>
   <Menu as="div" class="relative">
@@ -35,7 +46,12 @@
               ]"
               @click="$i18n.locale = item"
             >
-              <img alt="" class="w-6" :src="`/flags/${item}-flag.png`" />
+              <NuxtImg
+                :alt="item"
+                width="100px"
+                class="w-6"
+                :src="`/${findLangFlag(item)}.png`"
+              />
               <span>
                 {{ $t(item) }}
               </span>
