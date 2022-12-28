@@ -26,6 +26,9 @@ module.exports = {
         'span-13': 'span 13 / span 13',
         'span-14': 'span 14 / span 14',
       },
+      boxShadow: {
+        'primary-blurred': '0px 0px 9px rgba(0, 220, 130, 0.75)',
+      },
     },
   },
   plugins: [
