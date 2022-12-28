@@ -37,6 +37,13 @@
       startDate: new Date(new Date().setDate(new Date().getDate() - 2)),
       endDate: new Date(new Date().setDate(new Date().getDate() + 1)),
     },
+    {
+      id: 'e3',
+      title:
+        'That is looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo ooooooooooooooooooooooooooooooooooooooooong text.',
+      startDate: new Date(new Date().setDate(new Date().getDate() - 6)),
+      endDate: new Date(new Date().setDate(new Date().getDate() - 5)),
+    },
   ])
   const showDate = ref(new Date())
   const selectedPeriod = ref('month')
@@ -218,9 +225,10 @@
       </template>
       <template #item="{ value, top }">
         <div
-          class="c-item absolute rounded-md bg-primary-accent p-2 text-white"
+          class="c-item absolute truncate rounded-md bg-primary-accent p-2 text-white"
           :class="value.classes"
           :style="`top:${changeTopCalcFuntionForItem(top)};`"
+          :title="value.title"
         >
           {{ value.title }}
         </div>
