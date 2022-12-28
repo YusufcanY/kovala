@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import { CalendarView } from 'vue-simple-calendar'
-  import { ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+  import {
+    ChevronLeftIcon,
+    ChevronRightIcon,
+    ChevronUpDownIcon,
+  } from '@heroicons/vue/20/solid'
   import {
     Listbox,
     ListboxButton,
@@ -9,6 +13,7 @@
     ListboxOptions,
   } from '@headlessui/vue'
   import 'vue-simple-calendar/dist/style.css'
+  import { MapPinIcon } from '@heroicons/vue/24/outline'
   const days = [
     { value: 0, label: 'Sun' },
     { value: 1, label: 'Mon' },
@@ -34,9 +39,6 @@
     },
   ])
   const showDate = ref(new Date())
-  /*   const setShowDate = (date: Date) => {
-    showDate.value = date
-  } */
   const selectedPeriod = ref('month')
   const changeTopCalcFuntionForItem = (calc: string) =>
     calc.replace('2px', '12px')
@@ -53,15 +55,41 @@
       <template #header="{ headerProps }">
         <!-- <CalendarViewHeader :header-props="headerProps" @input="setShowDate" /> -->
         <div class="flex items-center justify-between">
-          <span class="text-2xl font-bold">
-            {{ headerProps.currentPeriodLabel }}
-          </span>
+          <div class="flex h-full items-center space-x-4">
+            <span class="whitespace-nowrap text-2xl font-bold">
+              {{ headerProps.periodLabel }}
+            </span>
+            <div class="flex h-full space-x-2">
+              <button
+                class="flex aspect-square h-full items-center justify-center rounded-md bg-page-foreground transition-all duration-200 hover:bg-primary-accent hover:text-white hover:shadow-primary-blurred dark:bg-dark-foreground dark:hover:bg-primary-accent"
+                @click="showDate = headerProps.previousPeriod"
+              >
+                <ChevronLeftIcon class="h-10 w-10" />
+              </button>
+              <button
+                v-show="
+                  headerProps.periodStart.getTime() !==
+                  headerProps.currentPeriod.getTime()
+                "
+                class="flex aspect-square h-full items-center justify-center rounded-md bg-page-foreground transition-all duration-200 hover:bg-primary-accent hover:text-white hover:shadow-primary-blurred dark:bg-dark-foreground dark:hover:bg-primary-accent"
+                @click="showDate = headerProps.currentPeriod"
+              >
+                <MapPinIcon class="h-10 w-10" />
+              </button>
+              <button
+                class="flex aspect-square h-full items-center justify-center rounded-md bg-page-foreground transition-all duration-200 hover:bg-primary-accent hover:text-white hover:shadow-primary-blurred dark:bg-dark-foreground dark:hover:bg-primary-accent"
+                @click="showDate = headerProps.nextPeriod"
+              >
+                <ChevronRightIcon class="h-10 w-10" />
+              </button>
+            </div>
+          </div>
           <div class="flex space-x-2">
             <Listbox v-model="selectedStartOfWeek">
               <div class="relative space-x-4">
                 <ListboxLabel>Starting day of the week</ListboxLabel>
                 <ListboxButton
-                  class="relative h-full w-32 cursor-default rounded-md bg-page-foreground py-2 pl-3 pr-10 text-left dark:bg-dark-foreground"
+                  class="relative h-full w-32 cursor-pointer rounded-md bg-page-foreground py-2 pl-3 pr-10 text-left dark:bg-dark-foreground"
                 >
                   <span class="block truncate">{{
                     selectedStartOfWeek.label
@@ -77,12 +105,15 @@
                 </ListboxButton>
 
                 <transition
-                  leave-active-class="transition duration-100 ease-in"
-                  leave-from-class="opacity-100"
-                  leave-to-class="opacity-0"
+                  enter-active-class="transition duration-100"
+                  enter-from-class="translate-y-2 opacity-0"
+                  enter-to-class="translate-y-0 opacity-100"
+                  leave-active-class="transition duration-100"
+                  leave-from-class="translate-y-0 opacity-100"
+                  leave-to-class="translate-y-2 opacity-0"
                 >
                   <ListboxOptions
-                    class="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-page-foreground text-base shadow-md hide-scrollbar dark:bg-dark-foreground sm:text-sm"
+                    class="absolute right-0 z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-page-foreground text-base shadow-md hide-scrollbar dark:bg-dark-foreground"
                   >
                     <ListboxOption
                       v-for="day in days"
