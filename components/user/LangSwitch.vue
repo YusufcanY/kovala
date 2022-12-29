@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
   import { LanguageIcon } from '@heroicons/vue/24/outline'
-  import { useStorage, usePreferredLanguages } from '@vueuse/core'
+  import { usePreferredLanguages } from '@vueuse/core'
   import { useI18n } from 'vue-i18n'
 
   const { availableLocales, locale } = useI18n()
@@ -15,7 +15,7 @@
         return 'en-flag_wddntp'
     }
   }
-  const storage = useStorage('locale', 'en')
+  const storage = useCookie('lang')
   const setLocale = (lang: string) => {
     storage.value = lang
     locale.value = lang
@@ -29,7 +29,12 @@
   const getLocale = () => {
     if (storage.value) {
       return storage.value
+    } else if (preferredLanguages.value[0].includes('-')) {
+      const lang = preferredLanguages.value[0].split('-')[0]
+      storage.value = lang
+      return lang
     } else {
+      storage.value = preferredLanguages.value[0]
       return preferredLanguages.value[0]
     }
   }
@@ -75,9 +80,9 @@
             >
               <NuxtImg
                 :alt="item"
-                width="100px"
                 class="w-6"
                 :src="`/${findLangFlag(item)}.png`"
+                width="100px"
               />
               <span>
                 {{ $t(item) }}
