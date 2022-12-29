@@ -40,8 +40,10 @@
     "@tailwindcss/line-clamp": "0.3.1",
     "@tailwindcss/typography": "0.5.2",
     "pinia": "2.0.19",
+    "vee-validate": "^4.7.3",
     "vue-simple-calendar": "^6.2.1",
-    "vuedraggable": "^4.1.0"
+    "vuedraggable": "^4.1.0",
+    "yup": "^0.32.11"
   },
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || ^17.0.0"

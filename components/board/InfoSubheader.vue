@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { LockClosedIcon, PlusIcon } from '@heroicons/vue/24/outline'
+  import { EyeIcon, LockClosedIcon, PlusIcon } from '@heroicons/vue/24/outline'
   import { useGroupStore } from '@/store/group'
 
   const route = useRoute()
@@ -8,6 +8,16 @@
   const group = computed(() => {
     if (groupID && typeof groupID === 'string') {
       return groupStore.getGroupById(Number(groupID))
+    }
+  })
+  const getVisibility = computed(() => {
+    switch (group.value?.visibility) {
+      case 10:
+        return 'Public'
+      case 20:
+        return 'Private'
+      default:
+        return 'Unknown'
     }
   })
 </script>
@@ -31,8 +41,9 @@
       <div class="flex flex-col space-y-1">
         <span class="text-sm font-medium text-[#86889F]">VISIBILITY</span>
         <div class="flex items-center space-x-2">
-          <LockClosedIcon class="h-9 w-9 p-1" />
-          <span class="text-xl font-bold">Private</span>
+          <EyeIcon v-if="group?.visibility === 10" class="h-9 w-9 p-1" />
+          <LockClosedIcon v-else class="h-9 w-9 p-1" />
+          <span class="text-xl font-bold">{{ getVisibility }}</span>
         </div>
       </div>
       <div class="flex flex-col space-y-1">
