@@ -66,8 +66,8 @@
         <div class="grid w-full grid-cols-16 items-center space-x-2">
           <div class="relative col-span-2">
             <NuxtImg
-              class="w-8 rounded-full"
               :alt="element.from"
+              class="w-8 rounded-full"
               :src="element.from_image"
               width="100px"
             />

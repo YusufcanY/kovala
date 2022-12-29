@@ -13,7 +13,7 @@
   import { useIssueStore } from '@/store/issues'
   import useItemActions from '@/composables/useItemActions'
   import type { ChangeEventCallback } from '@/types/IssueActions'
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface DraggableElement {
     element: Issue
   }

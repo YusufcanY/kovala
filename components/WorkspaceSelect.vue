@@ -57,10 +57,10 @@
     >
       <div class="flex space-x-1">
         <NuxtImg
-          :src="getWorkspaceById(activeWorkspaceId)?.icon"
           :alt="getWorkspaceById(activeWorkspaceId)?.name"
-          width="100px"
           class="w-8"
+          :src="getWorkspaceById(activeWorkspaceId)?.icon"
+          width="100px"
         />
         <div class="flex flex-col items-start">
           <label class="-mb-1 text-xs font-medium text-[#AEAFC1]">{{
@@ -87,9 +87,9 @@
         >
           <NuxtImg
             :alt="item.name"
+            class="w-8"
             :src="item.icon"
             width="100px"
-            class="w-8"
           />
           <div class="flex flex-col items-start">
             <span class="truncate">{{ item.name }}</span>
