@@ -10,16 +10,9 @@
 
   const group = useGroupStore()
   const workspaceDropdownOpen = useState('workspaceDropdownOpen', () => false)
-  const getGroupsWithRoute = computed(() => {
-    return group.groups.map((group) => {
-      return {
-        name: group.name,
-        icon: group.icon,
-        route: `/boards/${group.id}`,
-      }
-    })
-  })
-  const navItems = shallowRef([
+  const groups = computed(() => group.getGroupsForNavigation)
+
+  const navItems = computed(() => [
     {
       name: 'dashboard',
       icon: RectangleGroupIcon,
@@ -29,7 +22,7 @@
       name: 'boards',
       icon: RectangleStackIcon,
       route: '/boards',
-      children: getGroupsWithRoute.value,
+      children: groups.value,
       customComponent: resolveComponent('AddBoard'),
     },
     {

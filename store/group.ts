@@ -32,6 +32,15 @@ export const useGroupStore = defineStore('group', {
     getGroups: (state) => {
       return state.groups
     },
+    getGroupsForNavigation: (state) => {
+      return state.groups.map((group) => {
+        return {
+          name: group.name,
+          icon: group.icon,
+          route: '/boards/' + group.id,
+        }
+      })
+    },
     getGroupById: (state) => {
       return (id: number) => state.groups.find((group) => group.id === id)
     },
