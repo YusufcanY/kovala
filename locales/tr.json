@@ -22,5 +22,17 @@
   "tr": "Turkish",
   "search_for_anything": "Ara",
   "new_board": "Yeni Tablo",
-  "save": "Kaydet"
+  "save": "Kaydet",
+  "board": "Liste",
+  "private": "Özel",
+  "public": "Açık",
+  "team": "TAKIM",
+  "unknown": "Bilinmeyen",
+  "user": "Kullanıcı",
+  "visibility": "Görünürlük",
+  "visibility_uppercase": "GÖRÜNÜRLÜK",
+  "cancel": "İptal",
+  "create": "Oluştur",
+  "name": "İsim",
+  "new-board-group": "Yeni Liste Grubu"
 }

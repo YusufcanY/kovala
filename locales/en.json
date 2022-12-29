@@ -22,5 +22,17 @@
   "tr": "Turkish",
   "new_board": "New Board",
   "search_for_anything": "Search for anything",
-  "save": "Save"
+  "save": "Save",
+  "board": "BOARD",
+  "visibility": "Visibility",
+  "visibility_uppercase": "VISIBILITY",
+  "team": "TEAM",
+  "public": "Public",
+  "private": "Private",
+  "unknown": "Unknown",
+  "user": "User",
+  "new-board-group": "New Board Group",
+  "name": "Name",
+  "cancel": "Cancel",
+  "create": "Create"
 }
