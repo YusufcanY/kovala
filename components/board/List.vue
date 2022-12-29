@@ -51,6 +51,7 @@
   const updateBoardName = () => {
     boardStore.updateBoard(props.list.id, {
       id: props.list.id,
+      group_id: props.list.group_id,
       name: nameValue.value,
       color: props.list.color,
       is_editing: false,

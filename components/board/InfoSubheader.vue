@@ -1,5 +1,15 @@
 <script setup lang="ts">
   import { LockClosedIcon, PlusIcon } from '@heroicons/vue/24/outline'
+  import { useGroupStore } from '@/store/group'
+
+  const route = useRoute()
+  const groupStore = useGroupStore()
+  const groupID = route.params.groupID
+  const group = computed(() => {
+    if (groupID && typeof groupID === 'string') {
+      return groupStore.getGroupById(Number(groupID))
+    }
+  })
 </script>
 <template>
   <div class="grid grid-cols-16">
@@ -8,13 +18,13 @@
       <div class="flex items-center space-x-2">
         <div class="rounded-full bg-white dark:bg-dark-page-body">
           <NuxtImg
-            alt="Frontend"
+            :alt="group?.name"
             class="w-9 p-1"
-            src="/frontend_lkmt3e.png"
+            :src="group?.icon + '.png'"
             width="100px"
           />
         </div>
-        <span class="text-xl font-bold">Frontend</span>
+        <span class="text-xl font-bold">{{ group?.name }}</span>
       </div>
     </div>
     <div class="col-span-8 flex justify-end space-x-12">
@@ -32,32 +42,32 @@
             class="flex flex-row-reverse items-center justify-end -space-x-3 space-x-reverse"
           >
             <NuxtImg
-              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               alt="User"
+              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memoji-1_dbislj.jpg"
               width="100px"
             />
             <NuxtImg
-              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               alt="User"
+              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memoji-3_bnaogy.jpg"
               width="100px"
             />
             <NuxtImg
-              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               alt="User"
+              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memoji-2_hphha4.jpg"
               width="100px"
             />
             <NuxtImg
-              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               alt="User"
+              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memoji-4_joosgu.jpg"
               width="100px"
             />
             <NuxtImg
-              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               alt="User"
+              class="w-9 rounded-full border-2 border-white dark:border-dark-page-body"
               src="/memoji-5_m4tz9e.jpg"
               width="100px"
             />

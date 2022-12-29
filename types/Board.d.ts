@@ -20,6 +20,7 @@ interface Issue {
 }
 interface List {
   readonly id: number
+  readonly group_id: number
   name: string
   issues?: Issue[]
   is_editing?: boolean

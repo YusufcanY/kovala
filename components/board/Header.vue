@@ -8,9 +8,13 @@
   } from '@heroicons/vue/24/outline'
   import { useBoardStore } from '@/store/boards'
 
+  const route = useRoute()
   const boardStore = useBoardStore()
   const newBoard = () => {
-    boardStore.addBoard()
+    const groupID = route.params.groupID
+    if (groupID && typeof groupID === 'string') {
+      boardStore.addBoard(Number(groupID))
+    }
   }
 </script>
 <template>

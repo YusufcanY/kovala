@@ -1,6 +1,11 @@
 <script setup lang="ts">
   import { useBoardStore } from '@/store/boards'
   import type { Person } from '@/types/Person'
+
+  definePageMeta({
+    middleware: ['group-route'],
+  })
+  const route = useRoute()
   const board = useBoardStore()
   useState<Person[]>('people', () => [
     {
@@ -30,7 +35,10 @@
     },
   ])
   const boards = computed(() => {
-    return board.getBoardsWithIssues
+    const groupID = route.params.groupID
+    if (groupID && typeof groupID === 'string') {
+      return board.getBoardsWithIssues(Number(groupID))
+    }
   })
 </script>
 <template>

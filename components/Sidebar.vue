@@ -6,8 +6,19 @@
     RectangleGroupIcon,
     RectangleStackIcon,
   } from '@heroicons/vue/24/outline'
+  import { useGroupStore } from '@/store/group'
 
+  const group = useGroupStore()
   const workspaceDropdownOpen = useState('workspaceDropdownOpen', () => false)
+  const getGroupsWithRoute = computed(() => {
+    return group.groups.map((group) => {
+      return {
+        name: group.name,
+        icon: group.icon,
+        route: `/boards/${group.id}`,
+      }
+    })
+  })
   const navItems = shallowRef([
     {
       name: 'dashboard',
@@ -18,18 +29,7 @@
       name: 'boards',
       icon: RectangleStackIcon,
       route: '/boards',
-      children: [
-        {
-          name: 'Frontend',
-          icon: '/frontend_lkmt3e.png',
-          route: '/boards/frontend',
-        },
-        {
-          name: 'Backend',
-          icon: '/backend_r2hjvn.png',
-          route: '/boards/backend',
-        },
-      ],
+      children: getGroupsWithRoute.value,
       customComponent: resolveComponent('AddBoard'),
     },
     {
