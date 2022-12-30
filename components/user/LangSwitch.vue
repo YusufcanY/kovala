@@ -3,7 +3,7 @@
   import { LanguageIcon } from '@heroicons/vue/24/outline'
   import { usePreferredLanguages } from '@vueuse/core'
   import { useI18n } from 'vue-i18n'
-
+  import { setLocale as setLocaleOfValidate } from '@vee-validate/i18n'
   const { availableLocales, locale } = useI18n()
   const findLangFlag = (lang: string) => {
     switch (lang) {
@@ -24,6 +24,7 @@
         lang,
       },
     })
+    setLocaleOfValidate(lang)
   }
   const preferredLanguages = usePreferredLanguages()
   const getLocale = () => {
@@ -44,6 +45,7 @@
       lang: getLocale(),
     },
   })
+  setLocaleOfValidate(getLocale())
 </script>
 <template>
   <Menu as="div" class="relative">

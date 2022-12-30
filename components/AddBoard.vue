@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import { EyeIcon, LockClosedIcon, PlusIcon } from '@heroicons/vue/24/outline'
   import { ErrorMessage, Field, Form } from 'vee-validate'
-  import * as yup from 'yup'
   import {
     Dialog,
     DialogPanel,
@@ -13,10 +12,6 @@
 
   const router = useRouter()
   const group = useGroupStore()
-  const schema = yup.object({
-    name: yup.string().required(),
-    visibility: yup.string().required(),
-  })
   const isModalOpen = ref(false)
 
   const onSubmit = (values: any) => {
@@ -71,7 +66,6 @@
                   v-slot="{ errors, meta, values }"
                   class="mt-8 space-y-4"
                   :initial-values="{ visibility: 10 }"
-                  :validation-schema="schema"
                   @submit="onSubmit"
                 >
                   <div class="flex flex-col">
@@ -82,7 +76,9 @@
                       :class="
                         !errors.name ? 'ring-primary-accent' : 'ring-red-500'
                       "
+                      :label="$t('name')"
                       name="name"
+                      rules="required|max:32"
                       type="text"
                       validate-on-input
                     />
