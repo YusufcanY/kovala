@@ -41,6 +41,7 @@
     "@tailwindcss/typography": "0.5.2",
     "@vee-validate/i18n": "^4.7.3",
     "@vee-validate/rules": "^4.7.3",
+    "@vuepic/vue-datepicker": "^3.6.3",
     "pinia": "2.0.19",
     "vee-validate": "^4.7.3",
     "vue-simple-calendar": "^6.2.1",

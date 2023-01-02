@@ -33,9 +33,11 @@
   "user": "User",
   "new-board-group": "New Board Group",
   "name": "Name",
+  "date": "Date",
   "labels": {
     "name": "name",
-    "title": "title"
+    "title": "title",
+    "date": "date"
   },
   "cancel": "Cancel",
   "create": "Create"

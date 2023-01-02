@@ -42,3 +42,25 @@ body.dark *::-webkit-scrollbar-thumb {
   border-radius: 16px;
   border: 3px solid #191919;
 }
+
+.dp__theme_dark {
+  --dp-background-color: #191919 !important;
+  --dp-text-color: #f0f0f0 !important;
+  --dp-hover-color: #484848 !important;
+  --dp-hover-text-color: #f0f0f0 !important;
+  --dp-hover-icon-color: #959595 !important;
+  --dp-primary-color: #00dc82 !important;
+  --dp-primary-text-color: #f0f0f0 !important;
+  --dp-secondary-color: #a9a9a9 !important;
+  --dp-border-color: #2d2d2d !important;
+  --dp-menu-border-color: #2d2d2d !important;
+  --dp-border-color-hover: #aaaeb7 !important;
+  --dp-disabled-color: #737373 !important;
+  --dp-scroll-bar-background: #212121 !important;
+  --dp-scroll-bar-color: #484848 !important;
+  --dp-success-color: #00dc82 !important;
+  --dp-success-color-disabled: #428f59 !important;
+  --dp-icon-color: #959595 !important;
+  --dp-danger-color: rgb(239 68 68) !important;
+  --dp-highlight-color: rgba(0, 92, 178, 0.2) !important;
+}

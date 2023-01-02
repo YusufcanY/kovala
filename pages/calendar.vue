@@ -1,5 +1,7 @@
 <script setup lang="ts">
   import { CalendarView } from 'vue-simple-calendar'
+  import Datepicker from '@vuepic/vue-datepicker'
+  import '@vuepic/vue-datepicker/dist/main.css'
   import {
     ChevronLeftIcon,
     ChevronRightIcon,
@@ -52,12 +54,23 @@
     calc.replace('2px', '12px')
 
   const isModal = ref(false)
+  const date = ref<[] | Date[]>([])
+  const format = (date: Date[]) => {
+    const day1 = date[0].getDate()
+    const month1 = date[0].getMonth() + 1
+    const year1 = date[0].getFullYear()
+    const day2 = date[1].getDate()
+    const month2 = date[1].getMonth() + 1
+    const year2 = date[1].getFullYear()
+
+    return `${day1}/${month1}/${year1} - ${day2}/${month2}/${year2}`
+  }
   const onSubmit = (values: any) => {
     items.value.push({
       id: items.value.length + 1,
       title: values.title,
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: date.value[0],
+      endDate: date.value[1],
     })
     isModal.value = false
   }
@@ -265,7 +278,7 @@
             :class="!errors.title ? 'ring-primary-accent' : 'ring-red-500'"
             :label="$t('labels.title')"
             name="title"
-            rules="required|max:128|alpha"
+            rules="required|max:128|alpha_spaces"
             type="text"
             validate-on-input
           />
@@ -273,6 +286,42 @@
             <ErrorMessage
               class="absolute top-0 left-0 text-xs font-semibold text-red-500"
               name="title"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label for="name">{{ $t('date') }}</label>
+
+          <Datepicker
+            v-model="date"
+            :clearable="false"
+            dark
+            :enable-time-picker="false"
+            :format="format"
+            range
+          >
+            <template #dp-input="{ value }">
+              <Field
+                id="date"
+                class="mt-1 w-full rounded-md bg-page-foreground p-2 ring-primary-accent transition-all duration-200 focus:ring-1 dark:bg-dark-foreground"
+                :class="!errors.date ? 'ring-primary-accent' : 'ring-red-500'"
+                :label="$t('labels.date')"
+                :model-value="value"
+                name="date"
+                :rules="{
+                  required: true,
+                  regex:
+                    /^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4}) - ([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$/,
+                }"
+                type="text"
+                validate-on-input
+              />
+            </template>
+          </Datepicker>
+          <div class="relative h-4">
+            <ErrorMessage
+              class="absolute top-0 left-0 text-xs font-semibold text-red-500"
+              name="date"
             />
           </div>
         </div>
@@ -297,7 +346,6 @@
   </div>
 </template>
 <style scoped>
-  /* slide 4px bottom all .c-item except first child  */
   .c-item:not(:first-child) {
     margin-bottom: 12px;
   }
