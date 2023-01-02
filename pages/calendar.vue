@@ -54,7 +54,7 @@
     calc.replace('2px', '12px')
 
   const isModal = ref(false)
-  const date = ref<[] | Date[]>([])
+  const date = ref<[] | Date[]>([new Date(), new Date()])
   const format = (date: Date[]) => {
     const day1 = date[0].getDate()
     const month1 = date[0].getMonth() + 1
