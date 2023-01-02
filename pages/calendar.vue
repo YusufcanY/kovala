@@ -59,11 +59,14 @@
     const day1 = date[0].getDate()
     const month1 = date[0].getMonth() + 1
     const year1 = date[0].getFullYear()
-    const day2 = date[1].getDate()
-    const month2 = date[1].getMonth() + 1
-    const year2 = date[1].getFullYear()
-
-    return `${day1}/${month1}/${year1} - ${day2}/${month2}/${year2}`
+    if (date[1]) {
+      const day2 = date[1].getDate()
+      const month2 = date[1].getMonth() + 1
+      const year2 = date[1].getFullYear()
+      return `${day1}/${month1}/${year1} - ${day2}/${month2}/${year2}`
+    } else {
+      return `${day1}/${month1}/${year1}`
+    }
   }
   const onSubmit = (values: any) => {
     items.value.push({
