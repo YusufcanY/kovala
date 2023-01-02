@@ -34,5 +34,9 @@
   "cancel": "İptal",
   "create": "Oluştur",
   "name": "İsim",
+  "labels": {
+    "name": "İsim",
+    "title": "Başlık"
+  },
   "new-board-group": "Yeni Liste Grubu"
 }

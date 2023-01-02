@@ -33,6 +33,10 @@
   "user": "User",
   "new-board-group": "New Board Group",
   "name": "Name",
+  "labels": {
+    "name": "name",
+    "title": "title"
+  },
   "cancel": "Cancel",
   "create": "Create"
 }

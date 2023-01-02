@@ -38,7 +38,7 @@
             id="name"
             class="mt-1 rounded-md bg-page-foreground p-2 ring-primary-accent transition-all duration-200 focus:ring-1 dark:bg-dark-foreground"
             :class="!errors.name ? 'ring-primary-accent' : 'ring-red-500'"
-            :label="$t('name')"
+            :label="$t('labels.name')"
             name="name"
             rules="required|max:32|alpha"
             type="text"
