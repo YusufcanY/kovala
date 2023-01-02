@@ -13,13 +13,13 @@
     },
   })
   const emit = defineEmits(['update:modelValue'])
-  const toggleModal = () => {
-    emit('update:modelValue', props.modelValue)
+  const closeModal = () => {
+    emit('update:modelValue', false)
   }
 </script>
 <template>
   <TransitionRoot appear as="template" :show="props.modelValue">
-    <Dialog as="div" class="relative z-30" @close="toggleModal">
+    <Dialog as="div" class="relative z-30" @close="closeModal">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
