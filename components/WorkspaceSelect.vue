@@ -27,6 +27,7 @@
   ])
   const activeWorkspaceId = useState('activeWorkspaceId', () => 1)
   const workspaceDropdownOpen = useState('workspaceDropdownOpen', () => false)
+  const dropdownRef = ref(null)
   const toggleWorkspaceDropdown = () => {
     workspaceDropdownOpen.value = !workspaceDropdownOpen.value
   }
@@ -48,6 +49,10 @@
       isLoading.value = false
     }, 2000)
   }
+  onClickOutside(
+    dropdownRef,
+    () => workspaceDropdownOpen.value && toggleWorkspaceDropdown()
+  )
 </script>
 <template>
   <div class="relative w-full">
@@ -77,6 +82,7 @@
     <Transition name="dropdown">
       <div
         v-show="workspaceDropdownOpen"
+        ref="dropdownRef"
         class="absolute left-0 top-0 z-10 mt-16 flex w-full flex-col space-y-2 bg-white dark:bg-dark-page-body"
       >
         <button
