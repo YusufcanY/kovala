@@ -13,7 +13,7 @@
   import { useIssueStore } from '@/store/issues'
   import useItemActions from '@/composables/useItemActions'
   import type { ChangeEventCallback } from '@/types/IssueActions'
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   interface DraggableElement {
     element: Issue
   }
@@ -145,7 +145,7 @@
       :style="{ backgroundColor: props.list.color }"
     >
       <div
-        class="gradient-lighter absolute top-0 -left-1/2 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-opacity duration-200"
+        class="gradient-lighter absolute -left-1/2 top-0 h-full w-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-opacity duration-200"
         :class="
           props.list.is_editing || isMovedMarkActive
             ? 'opacity-100'
