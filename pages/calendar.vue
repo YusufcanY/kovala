@@ -81,7 +81,7 @@
 <template>
   <div class="relative flex h-full p-6">
     <CalendarView
-      class="h-full rounded-xl bg-white p-4 dark:bg-dark-page-body [&_*]:!hide-scrollbar [&>div]:!border-none [&>div_*]:!border-page-foreground [&>div_*]:dark:!border-dark-foreground"
+      class="h-full rounded-xl bg-white p-4 dark:bg-dark-page-body [&>div]:!border-none [&>div_*]:!border-page-foreground [&>div_*]:dark:!border-dark-foreground [&_*]:!hide-scrollbar"
       :display-period-uom="selectedPeriod"
       :items="items"
       :show-date="showDate"
@@ -162,7 +162,7 @@
                           active
                             ? 'bg-primary-accent bg-opacity-10 text-primary-accent'
                             : '',
-                          'relative cursor-pointer select-none py-2 pr-4 pl-3 transition-all duration-200',
+                          'relative cursor-pointer select-none py-2 pl-3 pr-4 transition-all duration-200',
                         ]"
                       >
                         <span
@@ -287,7 +287,7 @@
           />
           <div class="relative h-4">
             <ErrorMessage
-              class="absolute top-0 left-0 text-xs font-semibold text-red-500"
+              class="absolute left-0 top-0 text-xs font-semibold text-red-500"
               name="title"
             />
           </div>
@@ -323,7 +323,7 @@
           </Datepicker>
           <div class="relative h-4">
             <ErrorMessage
-              class="absolute top-0 left-0 text-xs font-semibold text-red-500"
+              class="absolute left-0 top-0 text-xs font-semibold text-red-500"
               name="date"
             />
           </div>

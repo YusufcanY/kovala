@@ -65,7 +65,7 @@
       leave-to-class="translate-y-2 opacity-0"
     >
       <MenuItems
-        class="absolute left-0 bottom-0 mb-12 w-full origin-bottom-left rounded-md bg-white shadow-lg dark:bg-dark-foreground"
+        class="absolute bottom-0 left-0 mb-12 w-full origin-bottom-left rounded-md bg-white shadow-lg dark:bg-dark-foreground"
       >
         <div class="px-1 py-1">
           <MenuItem

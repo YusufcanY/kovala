@@ -16,7 +16,7 @@
 <template>
   <div>
     <button
-      class="flex w-full items-center space-x-2 rounded-lg border-2 border-primary-accent border-opacity-0 bg-primary-accent bg-opacity-10 py-2 px-4 text-primary-accent transition-all duration-300 hover:border-opacity-100"
+      class="flex w-full items-center space-x-2 rounded-lg border-2 border-primary-accent border-opacity-0 bg-primary-accent bg-opacity-10 px-4 py-2 text-primary-accent transition-all duration-300 hover:border-opacity-100"
       @click="isModalOpen = true"
     >
       <PlusIcon class="h-6 w-6" />
@@ -46,7 +46,7 @@
           />
           <div class="relative h-4">
             <ErrorMessage
-              class="absolute top-0 left-0 text-xs font-semibold text-red-500"
+              class="absolute left-0 top-0 text-xs font-semibold text-red-500"
               name="name"
             />
           </div>

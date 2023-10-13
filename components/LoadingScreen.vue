@@ -10,14 +10,14 @@
   <Transition name="loading-back">
     <div
       v-show="isLoading"
-      class="fixed top-0 left-0 z-40 h-full w-full bg-secondary-accent bg-opacity-90 backdrop-blur-sm"
+      class="fixed left-0 top-0 z-40 h-full w-full bg-secondary-accent bg-opacity-90 backdrop-blur-sm"
     ></div>
   </Transition>
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <Transition name="loading-front">
     <div
       v-show="isLoading"
-      class="absolute top-0 left-0 z-50 flex h-full w-full flex-col items-center justify-center"
+      class="absolute left-0 top-0 z-50 flex h-full w-full flex-col items-center justify-center"
     >
       <div class="loadingio-spinner-cube-ugek8813moc">
         <div class="ldio-l1mv0tq4ov">

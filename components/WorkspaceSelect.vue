@@ -77,7 +77,7 @@
     <Transition name="dropdown">
       <div
         v-show="workspaceDropdownOpen"
-        class="absolute top-0 left-0 z-10 mt-16 flex w-full flex-col space-y-2 bg-white dark:bg-dark-page-body"
+        class="absolute left-0 top-0 z-10 mt-16 flex w-full flex-col space-y-2 bg-white dark:bg-dark-page-body"
       >
         <button
           v-for="item in getWorkspacesWithoutActive"

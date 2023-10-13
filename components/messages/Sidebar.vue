@@ -73,7 +73,7 @@
             />
             <div
               v-show="element.is_online"
-              class="absolute top-0 left-6 h-[12px] w-[12px] rounded-full border-2"
+              class="absolute left-6 top-0 h-[12px] w-[12px] rounded-full border-2"
               :class="
                 activeMessageID === element.id
                   ? 'border-primary-accent bg-white'

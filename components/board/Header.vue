@@ -27,7 +27,7 @@
           type="text"
         />
         <MagnifyingGlassIcon
-          class="absolute top-1/2 left-1 h-7 w-7 -translate-y-1/2 text-gray-400 transition-all duration-200 group-focus-within:text-primary-accent group-hover:text-primary-accent"
+          class="absolute left-1 top-1/2 h-7 w-7 -translate-y-1/2 text-gray-400 transition-all duration-200 group-focus-within:text-primary-accent group-hover:text-primary-accent"
         />
       </div>
     </div>
@@ -48,7 +48,7 @@
       >
         <BellIcon class="h-8 w-8 text-primary-accent" />
         <span
-          class="absolute top-1 right-2 h-3 w-3 rounded-full border-2 border-white bg-primary-accent dark:border-dark-page-body"
+          class="absolute right-2 top-1 h-3 w-3 rounded-full border-2 border-white bg-primary-accent dark:border-dark-page-body"
         />
       </button>
       <button
@@ -56,7 +56,7 @@
       >
         <ChatBubbleLeftIcon class="h-8 w-8 -scale-x-[1] text-primary-accent" />
         <span
-          class="absolute top-1 right-1 h-3 w-3 rounded-full border-2 border-white bg-primary-accent dark:border-dark-page-body"
+          class="absolute right-1 top-1 h-3 w-3 rounded-full border-2 border-white bg-primary-accent dark:border-dark-page-body"
         />
       </button>
       <button

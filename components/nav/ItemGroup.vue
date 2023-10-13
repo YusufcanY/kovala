@@ -14,7 +14,7 @@
 <template>
   <div>
     <button
-      class="flex w-full items-center justify-between rounded-xl bg-primary-accent bg-opacity-0 py-2 px-4 transition-all duration-300 hover:bg-opacity-10"
+      class="flex w-full items-center justify-between rounded-xl bg-primary-accent bg-opacity-0 px-4 py-2 transition-all duration-300 hover:bg-opacity-10"
       @click="toggleDropdown()"
     >
       <div class="flex items-center space-x-2">
@@ -31,7 +31,7 @@
         class="w-full"
       >
         <NuxtLink
-          class="group relative flex items-center space-x-2 rounded-lg bg-primary-accent py-2 px-4 transition-all duration-300"
+          class="group relative flex items-center space-x-2 rounded-lg bg-primary-accent px-4 py-2 transition-all duration-300"
           :class="
             $route.path === child.route
               ? 'font-medium'
