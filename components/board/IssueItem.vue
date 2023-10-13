@@ -2,7 +2,6 @@
   import {
     CheckCircleIcon,
     PaperClipIcon,
-    PencilSquareIcon,
     UserPlusIcon,
   } from '@heroicons/vue/24/outline'
   import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
@@ -20,13 +19,18 @@
   const titleValue = ref(props.issue.title)
   const updateIssue = () => {
     const ghost = { ...props.issue }
-    ghost.title = titleValue.value
+    ghost.title = titleValue.value.trim()
     ghost.is_editing = false
     issueStore.updateIssue(props.issue.id, ghost)
   }
   const inputRef = ref(null)
   const { focused } = useFocus(inputRef)
-  onClickOutside(inputRef, () => toggleIssueEditing())
+  onClickOutside(inputRef, (event) => {
+    if (event.pointerType === 'mouse') {
+      toggleIssueEditing()
+      titleValue.value = props.issue.title
+    }
+  })
   const toggleIssueEditing = async () => {
     const ghost = { ...props.issue }
     ghost.is_editing = !ghost.is_editing
@@ -98,15 +102,10 @@
 
         <div
           v-else
-          class="group relative flex items-center space-x-1 [&>*]:inline"
+          class="group relative flex items-center space-x-1 rounded-sm hover:bg-dark-foreground"
           @click="toggleIssueEditing()"
         >
           <span class="font-semibold">{{ props.issue.title }}</span>
-          <div>
-            <PencilSquareIcon
-              class="h-5 w-5 opacity-0 transition-opacity duration-100 group-hover:opacity-100"
-            />
-          </div>
         </div>
       </div>
       <div class="leading-5">
