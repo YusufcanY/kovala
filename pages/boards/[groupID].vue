@@ -43,12 +43,12 @@
 </script>
 <template>
   <div class="h-full">
-    <div class="space-y-10 p-6">
+    <div class="space-y-10 p-2">
       <BoardHeader />
       <BoardInfoSubheader />
     </div>
     <div
-      class="grid h-full grid-flow-col grid-cols-[repeat(5,1fr)] grid-rows-[unset] gap-x-6 overflow-scroll px-6 pb-6 hide-scrollbar"
+      class="grid h-full grid-flow-col grid-cols-[repeat(5,1fr)] grid-rows-[unset] gap-x-6 overflow-scroll px-2 pb-2 hide-scrollbar"
     >
       <BoardList v-for="(item, index) in boards" :key="index" :list="item" />
     </div>

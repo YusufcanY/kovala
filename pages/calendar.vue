@@ -2,7 +2,6 @@
   import Datepicker from '@vuepic/vue-datepicker'
   import '@vuepic/vue-datepicker/dist/main.css'
   import { ErrorMessage, Field, Form } from 'vee-validate'
-
   import { PlusIcon } from '@heroicons/vue/24/outline'
   import { Calendar } from '#components'
   const days = [
@@ -55,30 +54,21 @@
     }
   }
   const onSubmit = (values: any) => {
-    console.log('date.value :>> ', date.value)
     items.value.push({
       id: items.value[items.value.length - 1].id + 1,
       title: values.title,
-      startDate: new Date(),
-      endDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+      startDate: date.value[0],
+      endDate: date.value[1],
     })
-    console.log('items.value :>> ', items.value)
     date.value = [new Date(), new Date()]
     isModal.value = false
   }
 </script>
 <template>
-  <div class="relative flex h-full p-6">
+  <div class="relative flex h-full p-2">
     <Calendar
       :days="days"
-      :items="[
-        {
-          id: 1,
-          title: 'Landing Hero Section',
-          startDate: new Date(),
-          endDate: new Date(),
-        },
-      ]"
+      :items="items"
       :selected-period="selectedPeriod"
       :selected-start-of-week="selectedStartOfWeek"
       :show-date="showDate"
