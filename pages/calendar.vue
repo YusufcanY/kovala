@@ -270,7 +270,7 @@
     </button>
     <Modal v-model="isModal">
       <template #title>
-        {{ $t('new-board-group') }}
+        {{ $t('new_board_group') }}
       </template>
       <Form v-slot="{ errors, meta }" class="mt-8 space-y-4" @submit="onSubmit">
         <div class="flex flex-col">

@@ -31,7 +31,7 @@
   "private": "Private",
   "unknown": "Unknown",
   "user": "User",
-  "new-board-group": "New Board Group",
+  "new_board_group": "New Board Group",
   "name": "Name",
   "date": "Date",
   "labels": {

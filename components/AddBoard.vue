@@ -24,7 +24,7 @@
     </button>
     <Modal v-model="isModalOpen">
       <template #title>
-        {{ $t('new-board-group') }}
+        {{ $t('new_board_group') }}
       </template>
       <Form
         v-slot="{ errors, meta, values }"
