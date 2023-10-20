@@ -1,22 +1,10 @@
 <script setup lang="ts">
-  import { CalendarView } from 'vue-simple-calendar'
   import Datepicker from '@vuepic/vue-datepicker'
   import '@vuepic/vue-datepicker/dist/main.css'
-  import {
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ChevronUpDownIcon,
-  } from '@heroicons/vue/20/solid'
   import { ErrorMessage, Field, Form } from 'vee-validate'
-  import {
-    Listbox,
-    ListboxButton,
-    ListboxLabel,
-    ListboxOption,
-    ListboxOptions,
-  } from '@headlessui/vue'
-  import 'vue-simple-calendar/dist/style.css'
-  import { MapPinIcon, PlusIcon } from '@heroicons/vue/24/outline'
+
+  import { PlusIcon } from '@heroicons/vue/24/outline'
+  import { Calendar } from '#components'
   const days = [
     { value: 0, label: 'Sun' },
     { value: 1, label: 'Mon' },
@@ -50,8 +38,6 @@
   ])
   const showDate = ref(new Date())
   const selectedPeriod = ref('month')
-  const changeTopCalcFuntionForItem = (calc: string) =>
-    calc.replace('2px', '12px')
 
   const isModal = ref(false)
   const date = ref<[] | Date[]>([new Date(), new Date()])
@@ -69,199 +55,37 @@
     }
   }
   const onSubmit = (values: any) => {
+    console.log('date.value :>> ', date.value)
     items.value.push({
-      id: items.value.length + 1,
+      id: items.value[items.value.length - 1].id + 1,
       title: values.title,
-      startDate: date.value[0],
-      endDate: date.value[1],
+      startDate: new Date(),
+      endDate: new Date(new Date().setDate(new Date().getDate() + 1)),
     })
+    console.log('items.value :>> ', items.value)
+    date.value = [new Date(), new Date()]
     isModal.value = false
   }
 </script>
 <template>
   <div class="relative flex h-full p-6">
-    <CalendarView
-      class="h-full rounded-xl bg-white p-4 dark:bg-dark-page-body [&>div]:!border-none [&>div_*]:!border-page-foreground [&>div_*]:dark:!border-dark-foreground [&_*]:!hide-scrollbar"
-      :display-period-uom="selectedPeriod"
-      :items="items"
+    <Calendar
+      :days="days"
+      :items="[
+        {
+          id: 1,
+          title: 'Landing Hero Section',
+          startDate: new Date(),
+          endDate: new Date(),
+        },
+      ]"
+      :selected-period="selectedPeriod"
+      :selected-start-of-week="selectedStartOfWeek"
       :show-date="showDate"
-      :starting-day-of-week="selectedStartOfWeek.value"
-    >
-      <template #header="{ headerProps }">
-        <!-- <CalendarViewHeader :header-props="headerProps" @input="setShowDate" /> -->
-        <div class="flex items-center justify-between">
-          <div class="flex h-full items-center space-x-4">
-            <span class="whitespace-nowrap text-2xl font-bold">
-              {{ headerProps.periodLabel }}
-            </span>
-            <div class="flex h-full space-x-2">
-              <button
-                class="flex aspect-square h-full items-center justify-center rounded-md bg-page-foreground transition-all duration-200 hover:bg-primary-accent hover:text-white hover:shadow-primary-blurred dark:bg-dark-foreground dark:hover:bg-primary-accent"
-                @click="showDate = headerProps.previousPeriod"
-              >
-                <ChevronLeftIcon class="h-10 w-10" />
-              </button>
-              <button
-                v-show="
-                  headerProps.periodStart.getTime() !==
-                  headerProps.currentPeriod.getTime()
-                "
-                class="flex aspect-square h-full items-center justify-center rounded-md bg-page-foreground transition-all duration-200 hover:bg-primary-accent hover:text-white hover:shadow-primary-blurred dark:bg-dark-foreground dark:hover:bg-primary-accent"
-                @click="showDate = headerProps.currentPeriod"
-              >
-                <MapPinIcon class="h-10 w-10" />
-              </button>
-              <button
-                class="flex aspect-square h-full items-center justify-center rounded-md bg-page-foreground transition-all duration-200 hover:bg-primary-accent hover:text-white hover:shadow-primary-blurred dark:bg-dark-foreground dark:hover:bg-primary-accent"
-                @click="showDate = headerProps.nextPeriod"
-              >
-                <ChevronRightIcon class="h-10 w-10" />
-              </button>
-            </div>
-          </div>
-          <div class="flex space-x-2">
-            <Listbox v-model="selectedStartOfWeek">
-              <div class="relative space-x-4">
-                <ListboxLabel>Starting day of the week</ListboxLabel>
-                <ListboxButton
-                  class="relative h-full w-32 cursor-pointer rounded-md bg-page-foreground py-2 pl-3 pr-10 text-left dark:bg-dark-foreground"
-                >
-                  <span class="block truncate">{{
-                    selectedStartOfWeek.label
-                  }}</span>
-                  <span
-                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
-                  >
-                    <ChevronUpDownIcon
-                      aria-hidden="true"
-                      class="h-5 w-5 text-gray-400"
-                    />
-                  </span>
-                </ListboxButton>
-
-                <transition
-                  enter-active-class="transition duration-100"
-                  enter-from-class="translate-y-2 opacity-0"
-                  enter-to-class="translate-y-0 opacity-100"
-                  leave-active-class="transition duration-100"
-                  leave-from-class="translate-y-0 opacity-100"
-                  leave-to-class="translate-y-2 opacity-0"
-                >
-                  <ListboxOptions
-                    class="absolute right-0 z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-page-foreground text-base shadow-md hide-scrollbar dark:bg-dark-foreground"
-                  >
-                    <ListboxOption
-                      v-for="day in days"
-                      :key="day.value"
-                      v-slot="{ active, selected }"
-                      as="template"
-                      :value="day"
-                    >
-                      <li
-                        :class="[
-                          active
-                            ? 'bg-primary-accent bg-opacity-10 text-primary-accent'
-                            : '',
-                          'relative cursor-pointer select-none py-2 pl-3 pr-4 transition-all duration-200',
-                        ]"
-                      >
-                        <span
-                          class="block truncate"
-                          :class="{ 'font-bold text-primary-accent': selected }"
-                          >{{ day.label }}</span
-                        >
-                      </li>
-                    </ListboxOption>
-                  </ListboxOptions>
-                </transition>
-              </div>
-            </Listbox>
-            <div
-              class="relative flex rounded-md bg-page-foreground p-2 font-bold dark:bg-dark-foreground"
-            >
-              <label
-                class="z-20 flex w-24 cursor-pointer justify-center rounded-md py-2 text-sm"
-                for="week"
-              >
-                <span>Week</span>
-                <input
-                  id="week"
-                  v-model="selectedPeriod"
-                  class="hidden"
-                  name="period"
-                  type="radio"
-                  value="week"
-                />
-              </label>
-              <label
-                class="z-20 flex w-24 cursor-pointer justify-center rounded-md py-2 text-sm"
-                for="month"
-              >
-                <span>Month</span>
-                <input
-                  id="month"
-                  v-model="selectedPeriod"
-                  class="hidden"
-                  name="period"
-                  type="radio"
-                  value="month"
-                />
-              </label>
-              <label
-                class="z-20 flex w-24 cursor-pointer justify-center rounded-md py-2 text-sm"
-                for="year"
-              >
-                <span>Year</span>
-                <input
-                  id="year"
-                  v-model="selectedPeriod"
-                  class="hidden"
-                  name="period"
-                  type="radio"
-                  value="year"
-                />
-              </label>
-              <span
-                class="absolute z-10 flex h-9 w-24 rounded-md bg-primary-accent shadow-primary-blurred transition-transform duration-200"
-                :class="
-                  selectedPeriod === 'week'
-                    ? 'translate-x-0'
-                    : selectedPeriod === 'month'
-                    ? 'translate-x-full'
-                    : 'translate-x-[200%]'
-                "
-              ></span>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="my-2 h-1 w-full bg-page-foreground dark:bg-dark-foreground"
-        ></div>
-      </template>
-      <template #dayHeader="{ label, index }">
-        <div
-          class="flex w-full items-center justify-center py-2 font-semibold"
-          :class="{
-            'border-r-2 !border-solid border-page-foreground dark:border-dark-foreground':
-              index !== 'dow6',
-            'opacity-50': index === 'dow6' || index === 'dow0',
-          }"
-        >
-          {{ label }}
-        </div>
-      </template>
-      <template #item="{ value, top }">
-        <div
-          class="c-item absolute truncate rounded-md bg-primary-accent p-2 text-white"
-          :class="value.classes"
-          :style="`top:${changeTopCalcFuntionForItem(top)};`"
-          :title="value.title"
-        >
-          {{ value.title }}
-        </div>
-      </template>
-    </CalendarView>
+      @update:selected-period="(val) => (selectedPeriod = val)"
+      @update:selected-start-of-week="(val) => (selectedStartOfWeek = val)"
+      @update:show-date="(val) => (showDate = val)"
+    />
     <button
       class="absolute bottom-14 right-14 flex aspect-square items-center justify-center rounded-md bg-primary-accent p-2 text-white shadow-primary-blurred transition-all duration-200"
       @click="isModal = true"
@@ -270,7 +94,7 @@
     </button>
     <Modal v-model="isModal">
       <template #title>
-        {{ $t('new_board_group') }}
+        {{ $t('new_event') }}
       </template>
       <Form v-slot="{ errors, meta }" class="mt-8 space-y-4" @submit="onSubmit">
         <div class="flex flex-col">

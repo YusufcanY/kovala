@@ -5,7 +5,10 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/image-edge',
   ],
-  css: ['@/assets/css/main.css'],
+  css: [
+    '@/node_modules/vue-simple-calendar/dist/style.css',
+    '@/assets/css/main.css',
+  ],
   build: {
     transpile: ['@heroicons/vue'],
   },

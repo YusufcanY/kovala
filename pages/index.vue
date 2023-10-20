@@ -75,7 +75,9 @@
           >
             <!-- @end="handleEnd" -->
             <template #item="{ element }">
-              <div class="flex-1 rounded-lg bg-dark-page-body p-4">
+              <div
+                class="flex-1 rounded-lg bg-white p-4 dark:bg-dark-page-body"
+              >
                 {{ element.type }}
               </div>
             </template>
@@ -83,16 +85,14 @@
         </div>
       </template>
       <template #footer>
-        <button class="group flex w-full items-center gap-4">
-          <div
-            class="h-0.5 flex-1 bg-dark-page-body transition-all duration-200 group-hover:h-1"
-          ></div>
-          <div class="h-6 w-6 rounded-full bg-dark-page-body">
+        <button
+          class="flex w-full items-center gap-4 rounded-md py-2 transition-colors duration-200 hover:bg-dark-page-body"
+        >
+          <div class="h-1 flex-1 bg-white dark:bg-dark-page-body"></div>
+          <div class="h-8 w-8 rounded-full bg-white p-1 dark:bg-dark-page-body">
             <PlusIcon />
           </div>
-          <div
-            class="h-0.5 flex-1 bg-dark-page-body transition-all duration-200 group-hover:h-1"
-          ></div>
+          <div class="h-1 flex-1 bg-white dark:bg-dark-page-body"></div>
         </button>
       </template>
     </Draggable>
